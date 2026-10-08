@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.loadFromModule("break_silence", "Main");
+    engine.loadFromModule("break_silence.meta_objects", "Main");
 
     return QCoreApplication::exec();
 }
