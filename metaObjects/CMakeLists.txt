@@ -1,5 +1,5 @@
-qt_add_qml_module(break_silence.meta_objects
-    URI "break_silence.meta_objects"
+qt_add_qml_module(BreakSilence.MetaObjects
+    URI "BreakSilence.MetaObjects"
     RESOURCE_PREFIX "/qt/qml"
     QML_FILES
         Main.qml

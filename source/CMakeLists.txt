@@ -1,3 +1,3 @@
-qt_add_executable(appbreak_silence
+qt_add_executable(BreakSilence.APP
     main.cpp
 )
