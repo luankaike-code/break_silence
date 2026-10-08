@@ -3,4 +3,5 @@ qt_add_qml_module(BreakSilence.MetaObjects
     RESOURCE_PREFIX "/qt/qml"
     QML_FILES
         Main.qml
+        QML_FILES BaseWindow.qml
 )
