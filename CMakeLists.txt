@@ -9,6 +9,7 @@ find_package(Qt6 REQUIRED
     COMPONENTS
         Quick
         Multimedia
+        Widgets
 )
 
 qt_standard_project_setup(REQUIRES 6.5)
@@ -21,6 +22,7 @@ target_link_libraries(BreakSilence.APP
     PRIVATE
         Qt6::Quick
         Qt6::Multimedia
+        Qt6::Widgets
 
         BreakSilence.MetaObjects
         BreakSilence.Assets
