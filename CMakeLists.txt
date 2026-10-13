@@ -13,6 +13,7 @@ find_package(Qt6 REQUIRED
 
 qt_standard_project_setup(REQUIRES 6.5)
 
+add_subdirectory(assets)
 add_subdirectory(metaObjects)
 add_subdirectory(source)
 
@@ -20,7 +21,9 @@ target_link_libraries(BreakSilence.APP
     PRIVATE
         Qt6::Quick
         Qt6::Multimedia
+
         BreakSilence.MetaObjects
+        BreakSilence.Assets
 )
 
 install(TARGETS BreakSilence.APP
