@@ -1,5 +1,7 @@
 #include "configurationwindowbackend.h"
+#include <QFileInfo>
 #include <iostream>
+#include "files.h"
 
 ConfigurationWindowBackend::ConfigurationWindowBackend(QObject *parent)
     : QObject{parent},
@@ -10,7 +12,26 @@ ConfigurationWindowBackend::ConfigurationWindowBackend(QObject *parent)
 {}
 
 void ConfigurationWindowBackend::startSession() {
-    std::cout << "Iniciar sessão" << std::endl;
+    QFileInfo folderFileInfo(m_folderPath);
+
+    if (m_minDelaySoundInMs > m_maxDelaySoundInMs) {
+        errorInvalidMinMaxDelayInterval();
+        return;
+    } else if (!folderFileInfo.exists() || folderFileInfo.isFile()) {
+        errorInvalidFolder();
+        return;
+    }
+
+    QStringList folderSounds = Files::getAllAudiosAtFolder(m_folderPath);
+
+    if (folderSounds.size() < 1) {
+        errorEmptyFolder();
+        return;
+    }
+
+    for (QString f : folderSounds) {
+        std::cout << "sound found: " <<  f.toStdString() << std::endl;
+    }
 }
 
 const QString& ConfigurationWindowBackend::getFolderPath() {
