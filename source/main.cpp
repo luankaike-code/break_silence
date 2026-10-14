@@ -1,9 +1,12 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
+#include <QIcon>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    app.setWindowIcon(QIcon(":/assets/breaksilence_icon.svg"));
 
     QQmlApplicationEngine engine;
     QObject::connect(

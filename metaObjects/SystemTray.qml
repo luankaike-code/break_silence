@@ -8,7 +8,7 @@ SystemTrayIcon {
 
     property variant mainWindow
 
-    icon.source: "qrc:/icon.png"
+    icon.source: "qrc:/assets/breaksilence_icon.svg"
     menu:
         Menu {
             MenuItem {
