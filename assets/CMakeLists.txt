@@ -6,4 +6,5 @@ qt_add_resources(BreakSilence.Assets
     FILES
         folder.svg
         breaksilence_icon.svg
+        question_mark-svgrepo_com.svg
 )

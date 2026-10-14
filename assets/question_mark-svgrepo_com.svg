@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="800" viewBox="0 0 800 800">
+  <title>question_mark-svgrepo_com.svg</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M275 275 C275 205.964 330.964 150 400 150 C469.035 150 525 205.964 525 275 C525 344.036 469.035 400 400 400 L350 400 L350 550 L400 550 C551.88 550 675 426.878 675 275 C675 123.122 551.88 0 400 0 C248.122 0 125 123.122 125 275 Z" fill="#ffffff"/>
+    <path d="M500 650 L350 650 L350 800 L500 800 Z" fill="#ffffff"/>
+  </g>
+</svg>
