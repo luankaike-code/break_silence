@@ -26,6 +26,7 @@ target_link_libraries(BreakSilence.APP
 
         BreakSilence.MetaObjects
         BreakSilence.Assets
+        BreakSilence.APP.MetaObjects
 )
 
 install(TARGETS BreakSilence.APP
