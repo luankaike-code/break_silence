@@ -4,8 +4,6 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
-import "components"
-
 BaseWindow {
     width: 640
     height: 480
