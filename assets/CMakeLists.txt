@@ -5,4 +5,5 @@ qt_add_resources(BreakSilence.Assets
     PREFIX "/assets"
     FILES
         folder.svg
+        breaksilence_icon.svg
 )
