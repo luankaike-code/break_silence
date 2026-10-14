@@ -13,12 +13,32 @@ BaseWindow {
     title: qsTr("BreakSilence - Configuration")
     id: root
 
+    function clearCurrentError() {
+        labelError.text = ""
+        folderInput.isEmphasisError = false
+        minDelaySoundInput.isEmphasisError = false
+        maxDelaySoundInput.isEmphasisError = false
+    }
+
+    function setCurrentError(errorText, inputsToEmphasis=[]) {
+        labelError.text = qsTr(errorText)
+
+        for (const inputToEmphasis of inputsToEmphasis) {
+            if (inputToEmphasis)
+                inputToEmphasis.isEmphasisError = true
+        }
+    }
+
     ConfigurationWindowBackend {
         id: configurationWindowBackend
         folderPath: folderInput.text
         minDelaySoundInMs: { return parseInt(minDelaySoundInput.text) * 1000 }
         maxDelaySoundInMs: { return parseInt(maxDelaySoundInput.text) * 1000 }
         isToMonitorFolder: isToMonitorFolderCheckbox.checked
+
+        onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de minímo e maxímo é inválido", [minDelaySoundInput, maxDelaySoundInput])
+        onErrorInvalidFolder:setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
+        onErrorEmptyFolder: setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
 
     QtObject {
@@ -119,9 +139,23 @@ BaseWindow {
             Layout.alignment: Qt.AlignHCenter
             Layout.minimumHeight: rootVariables.emphasisConteinersHeight
 
+            Label {
+                id: labelError
+                text: ""
+                Material.foreground: Material.Red
+            }
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.minimumHeight: rootVariables.emphasisConteinersHeight
+
             Button {
                 text: "Iniciar"
-                onClicked: configurationWindowBackend.startSession()
+                onClicked: {
+                    clearCurrentError()
+                    configurationWindowBackend.startSession()
+                }
             }
         }
     }
