@@ -62,15 +62,44 @@ BaseWindow {
             }
         }
 
+        Dialog {
+            id: informativeDialog
+            title: qsTr('Como funciona o "monitorar pasta"')
+            width: 500
+
+            anchors.centerIn: parent
+            modal: true
+
+            standardButtons: Dialog.Ok
+
+            Label {
+                width: informativeDialog.width-40
+                anchors.centerIn: parent
+                wrapMode: Text.WordWrap
+                text: qsTr("Se ativado, a pasta sempre será reanalisada em busca de novos sons. Isso permite que novos sons Possam serem adicionados mesmo se o programa estiver em execução.")
+            }
+        }
+
         RowLayout {
             Layout.alignment: Qt.AlignCenter
+            spacing: 1
 
             Label {
                 text: qsTr("Monitorar a pasta")
             }
 
-            CheckBox {
+            ButtonImage {
+                source: "qrc:/assets/question_mark-svgrepo_com.svg"
 
+                onClicked: informativeDialog.open()
+                width: 10
+                transform: Translate {
+                    x: -1
+                    y: -5
+                }
+            }
+
+            CheckBox {
             }
         }
 
