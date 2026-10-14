@@ -4,12 +4,22 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 import QtQuick.Layouts
 
+import BreakSilence.APP.MetaObjects
+
 BaseWindow {
     width: 640
     height: 480
     visible: true
     title: qsTr("BreakSilence - Configuration")
     id: root
+
+    ConfigurationWindowBackend {
+        id: configurationWindowBackend
+        folderPath: folderInput.text
+        minDelaySoundInMs: { return parseInt(minDelaySoundInput.text) * 1000 }
+        maxDelaySoundInMs: { return parseInt(maxDelaySoundInput.text) * 1000 }
+        isToMonitorFolder: isToMonitorFolderCheckbox.checked
+    }
 
     QtObject {
         id: rootVariables
@@ -36,6 +46,7 @@ BaseWindow {
             Layout.alignment: Qt.AlignHCenter
 
             Input {
+                id: folderInput
                 placeholderText: qsTr("Caminho para a pasta de audios")
                 Layout.minimumWidth: rootVariables.inputWidth-buttonFolderDialog.width-folderInputConteiner.spacing
             }
@@ -49,12 +60,14 @@ BaseWindow {
             id: timeInputsConteiner
             Layout.alignment: Qt.AlignHCenter
 
-            Input {
+            InputNumber {
+                id: maxDelaySoundInput
                 placeholderText: qsTr("Tempo maxímo")
                 Layout.minimumWidth: rootVariables.inputWidth/2 - timeInputsConteiner.spacing/2
             }
 
-            Input {
+            InputNumber {
+                id: minDelaySoundInput
                 placeholderText: qsTr("Tempo minímo")
                 Layout.minimumWidth: rootVariables.inputWidth/2 - timeInputsConteiner.spacing/2
             }
@@ -98,6 +111,7 @@ BaseWindow {
             }
 
             CheckBox {
+                id: isToMonitorFolderCheckbox
             }
         }
 
@@ -107,6 +121,7 @@ BaseWindow {
 
             Button {
                 text: "Iniciar"
+                onClicked: configurationWindowBackend.startSession()
             }
         }
     }
