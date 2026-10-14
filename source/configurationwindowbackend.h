@@ -9,10 +9,10 @@ class ConfigurationWindowBackend : public QObject
     Q_OBJECT
     QML_ELEMENT
 
-    Q_PROPERTY(QString repositoryPath READ getRepositoryPath WRITE setRepositoryPath)
-    Q_PROPERTY(int minDelaySoundInMs READ getMinDelaySoundInMs WRITE setMinDelaySoundInMs)
-    Q_PROPERTY(int maxDelaySoundInMs READ getMaxDelaySoundInMs WRITE setMaxDelaySoundInMs)
-    Q_PROPERTY(bool isToMonitorFolder READ getIsToMonitorFolder WRITE setIsToMonitorFolder)
+    Q_PROPERTY(QString repositoryPath READ getRepositoryPath WRITE setRepositoryPath REQUIRED)
+    Q_PROPERTY(int minDelaySoundInMs READ getMinDelaySoundInMs WRITE setMinDelaySoundInMs REQUIRED)
+    Q_PROPERTY(int maxDelaySoundInMs READ getMaxDelaySoundInMs WRITE setMaxDelaySoundInMs REQUIRED)
+    Q_PROPERTY(bool isToMonitorFolder READ getIsToMonitorFolder WRITE setIsToMonitorFolder REQUIRED)
 
     QString m_repositoryPath;
     int m_minDelaySoundInMs;
