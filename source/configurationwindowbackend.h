@@ -9,12 +9,12 @@ class ConfigurationWindowBackend : public QObject
     Q_OBJECT
     QML_ELEMENT
 
-    Q_PROPERTY(QString repositoryPath READ getRepositoryPath WRITE setRepositoryPath REQUIRED)
+    Q_PROPERTY(QString folderPath READ getFolderPath WRITE setFolderPath REQUIRED)
     Q_PROPERTY(int minDelaySoundInMs READ getMinDelaySoundInMs WRITE setMinDelaySoundInMs REQUIRED)
     Q_PROPERTY(int maxDelaySoundInMs READ getMaxDelaySoundInMs WRITE setMaxDelaySoundInMs REQUIRED)
     Q_PROPERTY(bool isToMonitorFolder READ getIsToMonitorFolder WRITE setIsToMonitorFolder REQUIRED)
 
-    QString m_repositoryPath;
+    QString m_folderPath;
     int m_minDelaySoundInMs;
     int m_maxDelaySoundInMs;
     bool m_isToMonitorFolder;
@@ -23,12 +23,12 @@ public:
 
     Q_INVOKABLE void startSession();
 
-    const QString& getRepositoryPath();
+    const QString& getFolderPath();
     const int& getMinDelaySoundInMs();
     const int& getMaxDelaySoundInMs();
     const bool& getIsToMonitorFolder();
 
-    void setRepositoryPath(const QString& repositoryPath);
+    void setFolderPath(const QString& folderPath);
     void setMinDelaySoundInMs(const int& minDelaySoundInMs);
     void setMaxDelaySoundInMs(const int& maxDelaySoundInMs);
     void setIsToMonitorFolder(const bool& isToMonitorFolder);

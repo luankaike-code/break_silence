@@ -6,15 +6,15 @@ ConfigurationWindowBackend::ConfigurationWindowBackend(QObject *parent)
     m_minDelaySoundInMs(-1),
     m_maxDelaySoundInMs(-1),
     m_isToMonitorFolder(false),
-    m_repositoryPath("")
+    m_folderPath("")
 {}
 
 void ConfigurationWindowBackend::startSession() {
     std::cout << "Iniciar sessão" << std::endl;
 }
 
-const QString& ConfigurationWindowBackend::getRepositoryPath() {
-    return m_repositoryPath;
+const QString& ConfigurationWindowBackend::getFolderPath() {
+    return m_folderPath;
 }
 
 const int& ConfigurationWindowBackend::getMinDelaySoundInMs() {
@@ -29,8 +29,8 @@ const bool& ConfigurationWindowBackend::getIsToMonitorFolder() {
     return m_isToMonitorFolder;
 }
 
-void ConfigurationWindowBackend::setRepositoryPath(const QString& repositoryPath) {
-    m_repositoryPath = repositoryPath;
+void ConfigurationWindowBackend::setFolderPath(const QString& folderPath) {
+    m_folderPath = folderPath;
 }
 
 void ConfigurationWindowBackend::setMinDelaySoundInMs(const int& minDelaySoundInMs) {
