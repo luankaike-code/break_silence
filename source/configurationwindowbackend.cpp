@@ -32,6 +32,8 @@ void ConfigurationWindowBackend::startSession() {
     for (QString f : folderSounds) {
         std::cout << "sound found: " <<  f.toStdString() << std::endl;
     }
+
+    sessionStarted();
 }
 
 const QString& ConfigurationWindowBackend::getFolderPath() {

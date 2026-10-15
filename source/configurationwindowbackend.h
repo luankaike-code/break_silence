@@ -33,6 +33,8 @@ public:
     void setMaxDelaySoundInMs(const int& maxDelaySoundInMs);
     void setIsToMonitorFolder(const bool& isToMonitorFolder);
 signals:
+    void sessionStarted();
+
     void errorInvalidMinMaxDelayInterval();
     void errorInvalidFolder();
     void errorEmptyFolder();
