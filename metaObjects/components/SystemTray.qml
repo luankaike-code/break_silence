@@ -35,7 +35,7 @@ SystemTrayIcon {
 
         onActivated: function(reason) {
             if (reason === SystemTrayIcon.Trigger) {
-                mainWindow.visible = !mainWindow.visible
+                toggleConfigurationWindowVisibilityRequested()
             }
         }
 }
