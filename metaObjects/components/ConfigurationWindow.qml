@@ -98,6 +98,9 @@ BaseWindow {
 
             ButtonFolderDialog {
                 id: buttonFolderDialog
+                onFolderChoosed: (folderPath) => {
+                    folderInput.text = folderPath
+                }
             }
         }
 
