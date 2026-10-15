@@ -32,8 +32,8 @@ BaseWindow {
     ConfigurationWindowBackend {
         id: configurationWindowBackend
         folderPath: folderInput.text
-        minDelaySoundInMs: { return parseInt(minDelaySoundInput.text) * 1000 }
-        maxDelaySoundInMs: { return parseInt(maxDelaySoundInput.text) * 1000 }
+        minDelaySoundInMs: minDelaySoundInput.getValue()
+        maxDelaySoundInMs: maxDelaySoundInput.getValue()
         isToMonitorFolder: isToMonitorFolderCheckbox.checked
 
         onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de minímo e maxímo é inválido", [minDelaySoundInput, maxDelaySoundInput])
@@ -43,8 +43,8 @@ BaseWindow {
 
     QtObject {
         id: rootVariables
-        property int inputWidth: 300
-        property int emphasisConteinersHeight: 100
+        property int inputWidth: 350
+        property int emphasisConteinersHeight: 50
     }
 
     ColumnLayout {
@@ -77,19 +77,36 @@ BaseWindow {
         }
 
         RowLayout {
-            id: timeInputsConteiner
             Layout.alignment: Qt.AlignHCenter
 
-            InputNumber {
+            InputNumberWithMagnitude {
                 id: maxDelaySoundInput
                 placeholderText: qsTr("Tempo maxímo")
-                Layout.minimumWidth: rootVariables.inputWidth/2 - timeInputsConteiner.spacing/2
-            }
+                conteinerWidth: rootVariables.inputWidth
 
-            InputNumber {
+                model: [
+                    { value: 1, text: qsTr("Ms") },
+                    { value: 1000, text: qsTr("Seg") },
+                    { value: 1000*60, text: qsTr("Min") },
+                    { value: 1000*60*60, text: qsTr("Hr") },
+                ]
+            }
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+
+            InputNumberWithMagnitude {
                 id: minDelaySoundInput
-                placeholderText: qsTr("Tempo minímo")
-                Layout.minimumWidth: rootVariables.inputWidth/2 - timeInputsConteiner.spacing/2
+                placeholderText: qsTr("Tempo maxímo")
+                conteinerWidth: rootVariables.inputWidth
+
+                model: [
+                    { value: 1, text: qsTr("Ms") },
+                    { value: 1000, text: qsTr("Seg") },
+                    { value: 1000*60, text: qsTr("Min") },
+                    { value: 1000*60*60, text: qsTr("Hr") },
+                ]
             }
         }
 
