@@ -11,4 +11,5 @@ qt_add_qml_module(BreakSilence.MetaObjects
         components/ButtonImage.qml
         components/ButtonFolderDialog.qml
         components/InputNumber.qml
+        components/InputNumberWithMagnitude.qml
 )
