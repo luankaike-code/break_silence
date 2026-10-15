@@ -12,4 +12,5 @@ qt_add_qml_module(BreakSilence.MetaObjects
         components/ButtonFolderDialog.qml
         components/InputNumber.qml
         components/InputNumberWithMagnitude.qml
+        components/RandomSoundPlayer.qml
 )
