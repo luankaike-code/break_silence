@@ -4,7 +4,9 @@ import "components"
 ConfigurationWindow {
     id: root
 
+
     SystemTray {
-        mainWindow: root
+        configurationWindowIsvisible: root.visible
+        onToggleConfigurationWindowVisibilityRequested: root.visible? root.hide() : root.show()
     }
 }

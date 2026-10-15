@@ -6,16 +6,16 @@ SystemTrayIcon {
     visible: true
     tooltip: qsTr("Menu de controle")
 
-    property variant mainWindow
+    required property bool configurationWindowIsvisible
+
+    signal toggleConfigurationWindowVisibilityRequested
 
     icon.source: "qrc:/assets/breaksilence_icon.svg"
     menu:
         Menu {
             MenuItem {
-                text: mainWindow.visible ? "Ocultar Janela" : "Exibir Janela"
-                onTriggered: {
-                    mainWindow.visible = !mainWindow.visible
-                }
+                text: configurationWindowIsvisible ? "Ocultar Janela" : "Exibir Janela"
+                onTriggered: toggleConfigurationWindowVisibilityRequested()
             }
 
             MenuItem {
