@@ -9,6 +9,7 @@ RowLayout {
     property string placeholderText: qsTr("placeholderText")
     property bool isEmphasisError: false
     property int conteinerWidth: 300
+    property int currentIndex: 0
 
     function getValue() {
         return parseInt(input.text) * parseInt(magnitude.currentValue)
@@ -27,6 +28,7 @@ RowLayout {
 
         Layout.preferredWidth: conteinerWidth/4
 
+        currentIndex: root.currentIndex
         textRole: "text"
         valueRole: "value"
     }
