@@ -13,6 +13,8 @@ BaseWindow {
     title: qsTr("BreakSilence - Configuration")
     id: root
 
+    signal sessionStarted
+
     function clearCurrentError() {
         labelError.text = ""
         folderInput.isEmphasisError = false
@@ -36,7 +38,10 @@ BaseWindow {
         maxDelaySoundInMs: maxDelaySoundInput.getValue()
         isToMonitorFolder: isToMonitorFolderCheckbox.checked
 
-        onSessionStarted: root.hide()
+        onSessionStarted: {
+            root.hide()
+            root.sessionStarted()
+        }
 
         onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de mínimo e mximo é inválido", [minDelaySoundInput, maxDelaySoundInput])
         onErrorInvalidFolder:setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
