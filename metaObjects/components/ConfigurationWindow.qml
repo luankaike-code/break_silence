@@ -36,6 +36,8 @@ BaseWindow {
         maxDelaySoundInMs: maxDelaySoundInput.getValue()
         isToMonitorFolder: isToMonitorFolderCheckbox.checked
 
+        onSessionStarted: root.hide()
+
         onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de mínimo e mximo é inválido", [minDelaySoundInput, maxDelaySoundInput])
         onErrorInvalidFolder:setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
         onErrorEmptyFolder: setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
