@@ -26,7 +26,5 @@ QStringList Files::getAllAudiosAtFolder(const QString& path) {
         audioFiles.append(fileInfo.absoluteFilePath());
     }
 
-    std::cout << audioFiles.size() << std::endl;
-
     return audioFiles;
 }

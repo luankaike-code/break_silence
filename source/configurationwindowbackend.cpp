@@ -29,10 +29,6 @@ void ConfigurationWindowBackend::startSession() {
         return;
     }
 
-    for (QString f : folderSounds) {
-        std::cout << "sound found: " <<  f.toStdString() << std::endl;
-    }
-
     sessionStarted();
 }
 
