@@ -2,35 +2,36 @@ import QtQuick
 import QtQuick.Controls
 import QtMultimedia
 
+import BreakSilence.APP.MetaObjects
+
 Item {
     id: root
 
-    property variant sounds: [
-        "/home/luankaike-code/Sync/hd/sons/sl/gta-san andreas-ah-shit-here-we-go-again_BWv0Gvc.mp3"
-    ]
-
     signal soundFinished
 
+    required property string folderPath
+    required property bool isToMonitorFolder
+
     function play() {
-        mediaPlayer.source = getRandomSound()
+        mediaPlayer.source = backend.getRandomSoundOnFolder()
+        console.log(mediaPlayer.source)
+        root.soundFinished()
         mediaPlayer.play()
     }
 
-    function stop() {
-        mediaPlayer.pause()
-    }
+    RandomSoundPlayerBackend {
+        id: backend
 
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+        folderPath: root.folderPath
+        isToMonitorFolder: root.isToMonitorFolder
 
-    function getRandomSound() {
-        if (sounds?.length === 0) {
-            return
+        onErrorSoundNotFound: function (soundPath) {
+            console.log("sound nor found:", soundPath)
         }
-        return "file://" + sounds[getRandomInt(0, sounds.length)]
+
+        onErrorFolderNotHasSound: {
+            console.log("folder not has sound")
+        }
     }
 
     MediaPlayer {
@@ -42,8 +43,15 @@ Item {
 
         onPlaybackStateChanged: {
             if (playbackState === MediaPlayer.StoppedState) {
-                source = root.getRandomSound()
+                source = backend.getRandomSoundOnFolder()
                 root.soundFinished()
+                mediaPlayer.play()
+            }
+        }
+
+        onErrorChanged: {
+            if (error !== MediaPlayer.NoError) {
+                console.log("Erro ao tocar áudio:", errorString)
             }
         }
     }
