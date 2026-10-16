@@ -13,7 +13,16 @@ Window {
     ConfigurationWindow {
         id: configurationWindow
         visible: true
-        onSessionStarted: console.log("session started")
+        onSessionStarted: {
+            console.log("Session started")
+            randomSoundPlayer.play()
+        }
+    }
+
+    RandomSoundPlayer {
+        id: randomSoundPlayer
+        folderPath: configurationWindow.folderPath
+        isToMonitorFolder: configurationWindow.isToMonitorFolder
     }
 
     SystemTray {
