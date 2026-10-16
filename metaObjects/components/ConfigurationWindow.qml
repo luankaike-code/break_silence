@@ -15,6 +15,9 @@ BaseWindow {
 
     signal sessionStarted
 
+    property string folderPath: folderInput.text
+    property bool isToMonitorFolder: isToMonitorFolderCheckbox.checked
+
     function clearCurrentError() {
         labelError.text = ""
         folderInput.isEmphasisError = false
@@ -33,10 +36,10 @@ BaseWindow {
 
     ConfigurationWindowBackend {
         id: configurationWindowBackend
-        folderPath: folderInput.text
+        folderPath: root.folderPath
         minDelaySoundInMs: minDelaySoundInput.getValue()
         maxDelaySoundInMs: maxDelaySoundInput.getValue()
-        isToMonitorFolder: isToMonitorFolderCheckbox.checked
+        isToMonitorFolder: root.isToMonitorFolder
 
         onSessionStarted: {
             root.hide()
