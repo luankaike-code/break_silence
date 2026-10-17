@@ -7,7 +7,9 @@
 #include "numbers.h"
 
 RandomSoundPlayerBackend::RandomSoundPlayerBackend(QObject *parent)
-    : QObject{parent}
+    : QObject{parent},
+    m_maxSoundDelay(0),
+    m_minSoundDelay(0)
 {}
 
 QString RandomSoundPlayerBackend::getRandomSoundOnFolder() {
