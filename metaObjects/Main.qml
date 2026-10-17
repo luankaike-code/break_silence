@@ -21,10 +21,10 @@ Window {
 
     RandomSoundPlayer {
         id: randomSoundPlayer
-        folderPath: configurationWindow.folderPath
-        isToMonitorFolder: configurationWindow.isToMonitorFolder
-        minSoundDelay: configurationWindow.minDelaySound
-        maxSoundDelay: configurationWindow.maxDelaySound
+        folderPath: { return configurationWindow.getFolderPath() }
+        minSoundDelay: { return configurationWindow.getMinDelaySound() }
+        maxSoundDelay: { return configurationWindow.getMaxDelaySound() }
+        isToMonitorFolder: { return configurationWindow.getIsToMonitorFolder() }
     }
 
     SystemTray {
