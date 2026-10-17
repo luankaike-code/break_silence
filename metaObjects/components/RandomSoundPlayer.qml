@@ -11,11 +11,25 @@ Item {
 
     required property string folderPath
     required property bool isToMonitorFolder
+    required property int minSoundDelay
+    required property int maxSoundDelay
 
     function play() {
+        playTimer()
+    }
+
+    function stop() {
+        timer.stop()
+        mediaPlayer.stop()
+    }
+
+    function playTimer() {
+        timer.interval = backend.getDelayToNextSoundInMs()
+        timer.start()
+    }
+
+    function playSound() {
         mediaPlayer.source = backend.getRandomSoundOnFolder()
-        console.log(mediaPlayer.source)
-        root.soundFinished()
         mediaPlayer.play()
     }
 
@@ -24,6 +38,8 @@ Item {
 
         folderPath: root.folderPath
         isToMonitorFolder: root.isToMonitorFolder
+        minSoundDelay: root.minSoundDelay
+        maxSoundDelay: root.maxSoundDelay
 
         onErrorSoundNotFound: function (soundPath) {
             console.log("sound nor found:", soundPath)
@@ -31,6 +47,17 @@ Item {
 
         onErrorFolderNotHasSound: {
             console.log("folder not has sound")
+        }
+    }
+
+    Timer {
+        id: timer
+        interval: backend.getDelayToNextSoundInMs()
+        running: false
+        repeat: false
+
+        onTriggered: {
+            playSound()
         }
     }
 
@@ -43,9 +70,8 @@ Item {
 
         onPlaybackStateChanged: {
             if (playbackState === MediaPlayer.StoppedState) {
-                source = backend.getRandomSoundOnFolder()
                 root.soundFinished()
-                mediaPlayer.play()
+                playTimer()
             }
         }
 
