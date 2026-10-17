@@ -25,11 +25,13 @@ Item {
 
     function playTimer() {
         timer.interval = backend.getDelayToNextSoundInMs()
+        console.log("delay to next sound:", timer.interval, "Ms")
         timer.start()
     }
 
     function playSound() {
         mediaPlayer.source = backend.getRandomSoundOnFolder()
+        console.log("played sound:", mediaPlayer.source)
         mediaPlayer.play()
     }
 
