@@ -23,6 +23,8 @@ Window {
         id: randomSoundPlayer
         folderPath: configurationWindow.folderPath
         isToMonitorFolder: configurationWindow.isToMonitorFolder
+        minSoundDelay: configurationWindow.minDelaySound
+        maxSoundDelay: configurationWindow.maxDelaySound
     }
 
     SystemTray {
