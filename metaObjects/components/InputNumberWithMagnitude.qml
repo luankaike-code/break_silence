@@ -12,7 +12,10 @@ RowLayout {
     property int currentIndex: 0
 
     function getValue() {
-        return parseInt(input.text) * parseInt(magnitude.currentValue)
+        const inputValue = input.text === ""? 0 : parseInt(input.text)
+        const magnituteValue = magnitude.currentValue === undefined? 0 : parseInt(magnitude.currentValue)
+
+        return inputValue * magnituteValue
     }
 
     InputNumber {
