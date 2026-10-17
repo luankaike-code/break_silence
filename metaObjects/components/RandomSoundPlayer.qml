@@ -77,7 +77,7 @@ Item {
 
         onErrorChanged: {
             if (error !== MediaPlayer.NoError) {
-                console.log("Erro ao tocar áudio:", errorString)
+                console.log("error to play audio:", errorString)
             }
         }
     }
