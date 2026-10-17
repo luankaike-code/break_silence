@@ -5,7 +5,10 @@ import QtQuick.Controls.Material
 
 RowLayout {
     id: root
+
     required property variant model
+
+    property int inputDefaultValue: -1
     property string placeholderText: qsTr("placeholderText")
     property bool isEmphasisError: false
     property int conteinerWidth: 300
@@ -20,6 +23,7 @@ RowLayout {
 
     InputNumber {
         id: input
+        text: inputDefaultValue  < 0? "" : inputDefaultValue
         placeholderText: root.placeholderText
         Layout.preferredWidth: conteinerWidth - magnitude.width
         isEmphasisError: root.isEmphasisError
