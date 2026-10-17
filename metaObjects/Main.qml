@@ -22,8 +22,8 @@ Window {
     RandomSoundPlayer {
         id: randomSoundPlayer
         folderPath: { return configurationWindow.getFolderPath() }
-        minSoundDelay: { return configurationWindow.getMinDelaySound() }
-        maxSoundDelay: { return configurationWindow.getMaxDelaySound() }
+        minSoundDelay: { return configurationWindow.getMinSoundDelay() }
+        maxSoundDelay: { return configurationWindow.getMaxSoundDelay() }
         isToMonitorFolder: { return configurationWindow.getIsToMonitorFolder() }
     }
 

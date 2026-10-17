@@ -5,8 +5,8 @@
 
 ConfigurationWindowBackend::ConfigurationWindowBackend(QObject *parent)
     : QObject{parent},
-    m_minDelaySoundInMs(-1),
-    m_maxDelaySoundInMs(-1),
+    m_minSoundDelayInMs(-1),
+    m_maxSoundDelayInMs(-1),
     m_isToMonitorFolder(false),
     m_folderPath("")
 {}
@@ -14,7 +14,7 @@ ConfigurationWindowBackend::ConfigurationWindowBackend(QObject *parent)
 void ConfigurationWindowBackend::startSession() {
     QFileInfo folderFileInfo(m_folderPath);
 
-    if (m_minDelaySoundInMs > m_maxDelaySoundInMs) {
+    if (m_minSoundDelayInMs > m_maxSoundDelayInMs) {
         errorInvalidMinMaxDelayInterval();
         return;
     } else if (!folderFileInfo.exists() || folderFileInfo.isFile()) {
@@ -36,12 +36,12 @@ const QString& ConfigurationWindowBackend::getFolderPath() {
     return m_folderPath;
 }
 
-const int& ConfigurationWindowBackend::getMinDelaySoundInMs() {
-    return m_minDelaySoundInMs;
+const int& ConfigurationWindowBackend::getMinSoundDelayInMs() {
+    return m_minSoundDelayInMs;
 }
 
-const int& ConfigurationWindowBackend::getMaxDelaySoundInMs() {
-    return m_maxDelaySoundInMs;
+const int& ConfigurationWindowBackend::getMaxSoundDelayInMs() {
+    return m_maxSoundDelayInMs;
 }
 
 const bool& ConfigurationWindowBackend::getIsToMonitorFolder() {
@@ -52,12 +52,12 @@ void ConfigurationWindowBackend::setFolderPath(const QString& folderPath) {
     m_folderPath = folderPath;
 }
 
-void ConfigurationWindowBackend::setMinDelaySoundInMs(const int& minDelaySoundInMs) {
-    m_minDelaySoundInMs = minDelaySoundInMs;
+void ConfigurationWindowBackend::setMinSoundDelayInMs(const int& minSoundDelayInMs) {
+    m_minSoundDelayInMs = minSoundDelayInMs;
 }
 
-void ConfigurationWindowBackend::setMaxDelaySoundInMs(const int& maxDelaySoundInMs) {
-    m_maxDelaySoundInMs = maxDelaySoundInMs;
+void ConfigurationWindowBackend::setMaxSoundDelayInMs(const int& maxSoundDelayInMs) {
+    m_maxSoundDelayInMs = maxSoundDelayInMs;
 }
 
 void ConfigurationWindowBackend::setIsToMonitorFolder(const bool& isToMonitorFolder) {

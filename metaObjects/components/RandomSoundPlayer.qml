@@ -44,7 +44,7 @@ Item {
         maxSoundDelay: root.maxSoundDelay
 
         onErrorSoundNotFound: function (soundPath) {
-            console.log("sound nor found:", soundPath)
+            console.log("sound not found:", soundPath)
         }
 
         onErrorFolderNotHasSound: {

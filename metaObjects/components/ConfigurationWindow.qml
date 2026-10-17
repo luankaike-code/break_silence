@@ -24,19 +24,19 @@ BaseWindow {
         return isToMonitorFolderCheckbox.checked
     }
 
-    function getMinDelaySound() {
-        return minDelaySoundInput.getValue()
+    function getMinSoundDelay() {
+        return minSoundDelayInput.getValue()
     }
 
-    function getMaxDelaySound() {
-        return maxDelaySoundInput.getValue()
+    function getMaxSoundDelay() {
+        return maxSoundDelayInput.getValue()
     }
 
     function clearCurrentError() {
         labelError.text = ""
         folderInput.isEmphasisError = false
-        minDelaySoundInput.isEmphasisError = false
-        maxDelaySoundInput.isEmphasisError = false
+        minSoundDelayInput.isEmphasisError = false
+        maxSoundDelayInput.isEmphasisError = false
     }
 
     function setCurrentError(errorText, inputsToEmphasis=[]) {
@@ -51,8 +51,8 @@ BaseWindow {
     ConfigurationWindowBackend {
         id: configurationWindowBackend
         folderPath: { return root.getFolderPath() }
-        minDelaySoundInMs: { return root.getMinDelaySound() }
-        maxDelaySoundInMs: { return root.getMaxDelaySound() }
+        minSoundDelayInMs: { return root.getMinSoundDelay() }
+        maxSoundDelayInMs: { return root.getMaxSoundDelay() }
         isToMonitorFolder: { return root.getIsToMonitorFolder() }
 
         onSessionStarted: {
@@ -60,7 +60,7 @@ BaseWindow {
             root.sessionStarted()
         }
 
-        onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de mínimo e mximo é inválido", [minDelaySoundInput, maxDelaySoundInput])
+        onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
         onErrorInvalidFolder:setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
         onErrorEmptyFolder: setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
@@ -125,7 +125,7 @@ BaseWindow {
             Layout.alignment: Qt.AlignHCenter
 
             InputNumberWithMagnitude {
-                id: minDelaySoundInput
+                id: minSoundDelayInput
                 placeholderText: qsTr("Tempo mínimo")
                 conteinerWidth: rootVariables.inputWidth
 
@@ -142,7 +142,7 @@ BaseWindow {
             Layout.alignment: Qt.AlignHCenter
 
             InputNumberWithMagnitude {
-                id: maxDelaySoundInput
+                id: maxSoundDelayInput
                 placeholderText: qsTr("Tempo máximo")
                 conteinerWidth: rootVariables.inputWidth
 
