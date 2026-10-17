@@ -17,6 +17,8 @@ BaseWindow {
 
     property string folderPath: folderInput.text
     property bool isToMonitorFolder: isToMonitorFolderCheckbox.checked
+    property int minDelaySound: minDelaySoundInput.getValue()
+    property int maxDelaySound: maxDelaySoundInput.getValue()
 
     function clearCurrentError() {
         labelError.text = ""
@@ -37,8 +39,8 @@ BaseWindow {
     ConfigurationWindowBackend {
         id: configurationWindowBackend
         folderPath: root.folderPath
-        minDelaySoundInMs: minDelaySoundInput.getValue()
-        maxDelaySoundInMs: maxDelaySoundInput.getValue()
+        minDelaySoundInMs: root.minDelaySound
+        maxDelaySoundInMs: root.maxDelaySound
         isToMonitorFolder: root.isToMonitorFolder
 
         onSessionStarted: {
