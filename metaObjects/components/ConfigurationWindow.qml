@@ -146,6 +146,9 @@ BaseWindow {
                 placeholderText: qsTr("Tempo máximo")
                 conteinerWidth: rootVariables.inputWidth
 
+                inputDefaultValue: 30
+                currentIndex: 2
+
                 model: [
                     { value: 1, text: qsTr("Ms") },
                     { value: 1000, text: qsTr("Seg") },
