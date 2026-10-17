@@ -30,6 +30,10 @@ QString RandomSoundPlayerBackend::getRandomSoundOnFolder() {
     return QUrl::fromLocalFile(choosedSound).toString();
 }
 
+int RandomSoundPlayerBackend::getDelayToNextSoundInMs() {
+    return Numbers::getRandomInt(getMinSoundDelay(), getMaxSoundDelay());
+}
+
 void RandomSoundPlayerBackend::forceSoundPathsUpdate() {
     m_soundPaths = Files::getAllAudiosAtFolder(getFolderPath());
 }
@@ -39,6 +43,14 @@ const QStringList& RandomSoundPlayerBackend::getSoundPaths() {
         m_soundPaths = Files::getAllAudiosAtFolder(getFolderPath());
 
     return m_soundPaths;
+}
+
+const int& RandomSoundPlayerBackend::getMinSoundDelay() {
+    return m_minSoundDelay;
+}
+
+const int& RandomSoundPlayerBackend::getMaxSoundDelay() {
+    return m_maxSoundDelay;
 }
 
 const bool& RandomSoundPlayerBackend::getIsToMonitorFolder() {
@@ -51,6 +63,13 @@ const QString& RandomSoundPlayerBackend::getFolderPath() {
 
 void RandomSoundPlayerBackend::setFolderPath(const QString& folderPath) {
     m_folderPath = folderPath;
+}
+void RandomSoundPlayerBackend::setMinSoundDelay(const int& minSoundDelay) {
+    m_minSoundDelay = minSoundDelay;
+}
+
+void RandomSoundPlayerBackend::setMaxSoundDelay(const int& maxSoundDelay) {
+    m_maxSoundDelay = maxSoundDelay;
 }
 
 void RandomSoundPlayerBackend::setIsToMonitorFolder(const bool& isToMonitorFolder) {
