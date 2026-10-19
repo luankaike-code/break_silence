@@ -19,24 +19,22 @@ BaseWindow {
         return folderInput.text
     }
 
-
     function getIsToMonitorFolder() {
-        return isToMonitorFolderCheckbox.checked
+        return extraOptions.getIsToMonitorFolder()
     }
 
     function getMinSoundDelay() {
-        return minSoundDelayInput.getValue()
+        return extraOptions.getMinSoundDelay()
     }
 
     function getMaxSoundDelay() {
-        return maxSoundDelayInput.getValue()
+        return extraOptions.getMaxSoundDelay()
     }
 
     function clearCurrentError() {
         labelError.text = ""
         folderInput.isEmphasisError = false
-        minSoundDelayInput.isEmphasisError = false
-        maxSoundDelayInput.isEmphasisError = false
+        extraOptions.clearErrors()
     }
 
     function setCurrentError(errorText, inputsToEmphasis=[]) {
@@ -60,109 +58,21 @@ BaseWindow {
             root.sessionStarted()
         }
 
-        onErrorInvalidMinMaxDelayInterval: setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
-        onErrorInvalidFolder:setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
+        onErrorInvalidMinMaxDelayInterval: extraOptions.setErrorInvalidMinMaxDelayInterval()
+        onErrorInvalidFolder: setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
         onErrorEmptyFolder: setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
 
     QtObject {
         id: rootVariables
+
         property int inputWidth: 350
         property int emphasisConteinersHeight: 50
     }
 
-    Dialog {
-        id: informativeDialog
-        title: qsTr('Como funciona o "monitorar pasta"')
-        width: 500
-
-        anchors.centerIn: parent
-        modal: true
-
-        standardButtons: Dialog.Ok
-
-        Label {
-            width: informativeDialog.width-40
-            anchors.centerIn: parent
-            wrapMode: Text.WordWrap
-            text: qsTr("Se ativado, a pasta sempre será reanalisada em busca de novos sons. Isso permite que novos sons Possam serem adicionados mesmo se o programa estiver em execução.")
-        }
-    }
-
-    Dialog {
-        id: extraOptionsdialog
-        title: qsTr("Opções extras")
-        visible: false
-
-        Material.theme: parent.Material.theme
-
-        modal: true
-        anchors.centerIn: parent
-
-        ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter
-
-            RowLayout {
-                Layout.alignment: Qt.AlignHCenter
-
-                InputNumberWithMagnitude {
-                    id: minSoundDelayInput
-                    placeholderText: qsTr("Tempo mínimo")
-                    conteinerWidth: rootVariables.inputWidth
-
-                    model: [
-                        { value: 1, text: qsTr("Ms") },
-                        { value: 1000, text: qsTr("Seg") },
-                        { value: 1000*60, text: qsTr("Min") },
-                        { value: 1000*60*60, text: qsTr("Hr") },
-                    ]
-                }
-            }
-
-            RowLayout {
-                Layout.alignment: Qt.AlignHCenter
-
-                InputNumberWithMagnitude {
-                    id: maxSoundDelayInput
-                    placeholderText: qsTr("Tempo máximo")
-                    conteinerWidth: rootVariables.inputWidth
-
-                    inputDefaultValue: 30
-                    currentIndex: 2
-
-                    model: [
-                        { value: 1, text: qsTr("Ms") },
-                        { value: 1000, text: qsTr("Seg") },
-                        { value: 1000*60, text: qsTr("Min") },
-                        { value: 1000*60*60, text: qsTr("Hr") },
-                    ]
-                }
-            }
-
-            RowLayout {
-                Layout.alignment: Qt.AlignCenter
-                spacing: 1
-
-                Label {
-                    text: qsTr("Monitorar a pasta")
-                }
-
-                ButtonImage {
-                    source: "qrc:/assets/question_mark-svgrepo_com.svg"
-
-                    onClicked: informativeDialog.open()
-                    width: 10
-                    transform: Translate {
-                        x: -1
-                        y: -5
-                    }
-                }
-
-                CheckBox {
-                    id: isToMonitorFolderCheckbox
-                }
-            }
-        }
+    ConfigurationWindowExtraOptions {
+        id: extraOptions
+        inputWidth: rootVariables.inputWidth
     }
 
     ColumnLayout {
@@ -201,8 +111,8 @@ BaseWindow {
             Layout.alignment: Qt.AlignCenter
 
             Button {
-                text: extraOptionsdialog.visible? qsTr("Mostrar opções extras") : qsTr("Mostrar opções extras")
-                onClicked: extraOptionsdialog.visible = !extraOptionsdialog.visible
+                text: extraOptions.visible? qsTr("Mostrar opções extras") : qsTr("Mostrar opções extras")
+                onClicked: extraOptions.visible = !extraOptions.visible
             }
         }
 
