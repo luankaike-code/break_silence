@@ -89,6 +89,82 @@ BaseWindow {
         }
     }
 
+    Dialog {
+        id: extraOptionsdialog
+        title: qsTr("Opções extras")
+        visible: false
+
+        Material.theme: parent.Material.theme
+
+        modal: true
+        anchors.centerIn: parent
+
+        ColumnLayout {
+            Layout.alignment: Qt.AlignHCenter
+
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+
+                InputNumberWithMagnitude {
+                    id: minSoundDelayInput
+                    placeholderText: qsTr("Tempo mínimo")
+                    conteinerWidth: rootVariables.inputWidth
+
+                    model: [
+                        { value: 1, text: qsTr("Ms") },
+                        { value: 1000, text: qsTr("Seg") },
+                        { value: 1000*60, text: qsTr("Min") },
+                        { value: 1000*60*60, text: qsTr("Hr") },
+                    ]
+                }
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+
+                InputNumberWithMagnitude {
+                    id: maxSoundDelayInput
+                    placeholderText: qsTr("Tempo máximo")
+                    conteinerWidth: rootVariables.inputWidth
+
+                    inputDefaultValue: 30
+                    currentIndex: 2
+
+                    model: [
+                        { value: 1, text: qsTr("Ms") },
+                        { value: 1000, text: qsTr("Seg") },
+                        { value: 1000*60, text: qsTr("Min") },
+                        { value: 1000*60*60, text: qsTr("Hr") },
+                    ]
+                }
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignCenter
+                spacing: 1
+
+                Label {
+                    text: qsTr("Monitorar a pasta")
+                }
+
+                ButtonImage {
+                    source: "qrc:/assets/question_mark-svgrepo_com.svg"
+
+                    onClicked: informativeDialog.open()
+                    width: 10
+                    transform: Translate {
+                        x: -1
+                        y: -5
+                    }
+                }
+
+                CheckBox {
+                    id: isToMonitorFolderCheckbox
+                }
+            }
+        }
+    }
+
     ColumnLayout {
         anchors.fill: parent
 
@@ -122,63 +198,11 @@ BaseWindow {
         }
 
         RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-
-            InputNumberWithMagnitude {
-                id: minSoundDelayInput
-                placeholderText: qsTr("Tempo mínimo")
-                conteinerWidth: rootVariables.inputWidth
-
-                model: [
-                    { value: 1, text: qsTr("Ms") },
-                    { value: 1000, text: qsTr("Seg") },
-                    { value: 1000*60, text: qsTr("Min") },
-                    { value: 1000*60*60, text: qsTr("Hr") },
-                ]
-            }
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-
-            InputNumberWithMagnitude {
-                id: maxSoundDelayInput
-                placeholderText: qsTr("Tempo máximo")
-                conteinerWidth: rootVariables.inputWidth
-
-                inputDefaultValue: 30
-                currentIndex: 2
-
-                model: [
-                    { value: 1, text: qsTr("Ms") },
-                    { value: 1000, text: qsTr("Seg") },
-                    { value: 1000*60, text: qsTr("Min") },
-                    { value: 1000*60*60, text: qsTr("Hr") },
-                ]
-            }
-        }
-
-        RowLayout {
             Layout.alignment: Qt.AlignCenter
-            spacing: 1
 
-            Label {
-                text: qsTr("Monitorar a pasta")
-            }
-
-            ButtonImage {
-                source: "qrc:/assets/question_mark-svgrepo_com.svg"
-
-                onClicked: informativeDialog.open()
-                width: 10
-                transform: Translate {
-                    x: -1
-                    y: -5
-                }
-            }
-
-            CheckBox {
-                id: isToMonitorFolderCheckbox
+            Button {
+                text: extraOptionsdialog.visible? qsTr("Mostrar opções extras") : qsTr("Mostrar opções extras")
+                onClicked: extraOptionsdialog.visible = !extraOptionsdialog.visible
             }
         }
 
