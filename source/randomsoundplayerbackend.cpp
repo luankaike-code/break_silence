@@ -40,7 +40,7 @@ void RandomSoundPlayerBackend::forceSoundPathsUpdate() {
     m_soundPaths = Files::getAllAudiosAtFolder(getFolderPath());
 }
 
-const QStringList& RandomSoundPlayerBackend::getSoundPaths() {
+QStringList RandomSoundPlayerBackend::getSoundPaths() {
     if (m_soundPaths.size() < 1 || getIsToMonitorFolder())
         m_soundPaths = Files::getAllAudiosAtFolder(getFolderPath());
 
@@ -59,7 +59,7 @@ bool RandomSoundPlayerBackend::getIsToMonitorFolder() {
     return m_isToMonitorFolder;
 }
 
-const QString& RandomSoundPlayerBackend::getFolderPath() {
+QString RandomSoundPlayerBackend::getFolderPath() {
     return m_folderPath;
 }
 

@@ -23,7 +23,7 @@ public:
 
     Q_INVOKABLE void startSession();
 
-    const QString& getFolderPath();
+    QString getFolderPath();
     int getMinSoundDelayInMs();
     int getMaxSoundDelayInMs();
     bool getIsToMonitorFolder();

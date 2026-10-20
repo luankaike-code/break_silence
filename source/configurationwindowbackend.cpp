@@ -32,7 +32,7 @@ void ConfigurationWindowBackend::startSession() {
     sessionStarted();
 }
 
-const QString& ConfigurationWindowBackend::getFolderPath() {
+QString ConfigurationWindowBackend::getFolderPath() {
     return m_folderPath;
 }
 

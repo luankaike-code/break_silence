@@ -28,10 +28,10 @@ public:
     Q_INVOKABLE QString getRandomSoundOnFolder();
     Q_INVOKABLE int getDelayToNextSoundInMs();
 
-    const QStringList& getSoundPaths();
+    QStringList getSoundPaths();
     void forceSoundPathsUpdate();
 
-    const QString& getFolderPath();
+    QString getFolderPath();
     int getMinSoundDelay();
     int getMaxSoundDelay();
     bool getIsToMonitorFolder();
