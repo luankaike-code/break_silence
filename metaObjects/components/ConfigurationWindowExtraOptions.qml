@@ -38,12 +38,6 @@ Dialog {
         maxSoundDelayInput.isEmphasisError = false
     }
 
-    InformativeDialog {
-        id: informativeDialogMonitorarFolder
-        title: qsTr('Como funciona o "monitorar pasta"')
-        text: qsTr("Se ativado, a pasta sempre será reanalisada em busca de novos sons. Isso permite que novos sons Possam serem adicionados mesmo se o programa estiver em execução.")
-    }
-
     QtObject {
         id: rootVariables
 
@@ -68,6 +62,12 @@ Dialog {
             }
             root.open()
         }
+    }
+
+    InformativeDialog {
+        id: informativeDialogMonitorarFolder
+        title: qsTr('Como funciona o "monitorar pasta"')
+        text: qsTr("Se ativado, a pasta sempre será reanalisada em busca de novos sons. Isso permite que novos sons Possam serem adicionados mesmo se o programa estiver em execução.")
     }
 
     ColumnLayout {

@@ -31,23 +31,6 @@ BaseWindow {
         return extraOptions.getMaxSoundDelay()
     }
 
-    ConfigurationWindowBackend {
-        id: configurationWindowBackend
-        folderPath: { return root.getFolderPath() }
-        minSoundDelayInMs: { return root.getMinSoundDelay() }
-        maxSoundDelayInMs: { return root.getMaxSoundDelay() }
-        isToMonitorFolder: { return root.getIsToMonitorFolder() }
-
-        onSessionStarted: {
-            root.hide()
-            root.sessionStarted()
-        }
-
-        onErrorInvalidMinMaxDelayInterval: extraOptions.setErrorInvalidMinMaxDelayInterval()
-        onErrorInvalidFolder: rootFuncs.setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
-        onErrorEmptyFolder: rootFuncs.setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
-    }
-
     QtObject {
         id: rootVariables
 
@@ -72,6 +55,23 @@ BaseWindow {
                     inputToEmphasis.isEmphasisError = true
             }
         }
+    }
+
+    ConfigurationWindowBackend {
+        id: configurationWindowBackend
+        folderPath: { return root.getFolderPath() }
+        minSoundDelayInMs: { return root.getMinSoundDelay() }
+        maxSoundDelayInMs: { return root.getMaxSoundDelay() }
+        isToMonitorFolder: { return root.getIsToMonitorFolder() }
+
+        onSessionStarted: {
+            root.hide()
+            root.sessionStarted()
+        }
+
+        onErrorInvalidMinMaxDelayInterval: extraOptions.setErrorInvalidMinMaxDelayInterval()
+        onErrorInvalidFolder: rootFuncs.setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
+        onErrorEmptyFolder: rootFuncs.setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
 
     ConfigurationWindowExtraOptions {
