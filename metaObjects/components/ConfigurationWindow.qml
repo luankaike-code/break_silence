@@ -39,7 +39,7 @@ BaseWindow {
     }
 
     QtObject {
-        id: rootFuncs
+        id: rootFunctions
 
         function clearErrors() {
             labelError.text = ""
@@ -70,8 +70,8 @@ BaseWindow {
         }
 
         onErrorInvalidMinMaxDelayInterval: extraOptions.setErrorInvalidMinMaxDelayInterval()
-        onErrorInvalidFolder: rootFuncs.setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
-        onErrorEmptyFolder: rootFuncs.setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
+        onErrorInvalidFolder: rootFunctions.setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
+        onErrorEmptyFolder: rootFunctions.setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
 
     ConfigurationWindowExtraOptions {
@@ -138,7 +138,7 @@ BaseWindow {
             Button {
                 text: "Iniciar"
                 onClicked: {
-                    rootFuncs.clearErrors()
+                    rootFunctions.clearErrors()
                     configurationWindowBackend.startSession()
                 }
             }
