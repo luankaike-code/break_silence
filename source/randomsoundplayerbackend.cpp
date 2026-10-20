@@ -47,15 +47,15 @@ const QStringList& RandomSoundPlayerBackend::getSoundPaths() {
     return m_soundPaths;
 }
 
-const int& RandomSoundPlayerBackend::getMinSoundDelay() {
+int RandomSoundPlayerBackend::getMinSoundDelay() {
     return m_minSoundDelay;
 }
 
-const int& RandomSoundPlayerBackend::getMaxSoundDelay() {
+int RandomSoundPlayerBackend::getMaxSoundDelay() {
     return m_maxSoundDelay;
 }
 
-const bool& RandomSoundPlayerBackend::getIsToMonitorFolder() {
+bool RandomSoundPlayerBackend::getIsToMonitorFolder() {
     return m_isToMonitorFolder;
 }
 
@@ -66,14 +66,14 @@ const QString& RandomSoundPlayerBackend::getFolderPath() {
 void RandomSoundPlayerBackend::setFolderPath(const QString& folderPath) {
     m_folderPath = folderPath;
 }
-void RandomSoundPlayerBackend::setMinSoundDelay(const int& minSoundDelay) {
+void RandomSoundPlayerBackend::setMinSoundDelay(int minSoundDelay) {
     m_minSoundDelay = minSoundDelay;
 }
 
-void RandomSoundPlayerBackend::setMaxSoundDelay(const int& maxSoundDelay) {
+void RandomSoundPlayerBackend::setMaxSoundDelay(int maxSoundDelay) {
     m_maxSoundDelay = maxSoundDelay;
 }
 
-void RandomSoundPlayerBackend::setIsToMonitorFolder(const bool& isToMonitorFolder) {
+void RandomSoundPlayerBackend::setIsToMonitorFolder(bool isToMonitorFolder) {
     m_isToMonitorFolder = isToMonitorFolder;
 }

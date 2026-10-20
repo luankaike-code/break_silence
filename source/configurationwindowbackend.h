@@ -24,14 +24,14 @@ public:
     Q_INVOKABLE void startSession();
 
     const QString& getFolderPath();
-    const int& getMinSoundDelayInMs();
-    const int& getMaxSoundDelayInMs();
-    const bool& getIsToMonitorFolder();
+    int getMinSoundDelayInMs();
+    int getMaxSoundDelayInMs();
+    bool getIsToMonitorFolder();
 
     void setFolderPath(const QString& folderPath);
-    void setMinSoundDelayInMs(const int& minSoundDelayInMs);
-    void setMaxSoundDelayInMs(const int& maxSoundDelayInMs);
-    void setIsToMonitorFolder(const bool& isToMonitorFolder);
+    void setMinSoundDelayInMs(int minSoundDelayInMs);
+    void setMaxSoundDelayInMs(int maxSoundDelayInMs);
+    void setIsToMonitorFolder(bool isToMonitorFolder);
 signals:
     void sessionStarted();
 

@@ -36,15 +36,15 @@ const QString& ConfigurationWindowBackend::getFolderPath() {
     return m_folderPath;
 }
 
-const int& ConfigurationWindowBackend::getMinSoundDelayInMs() {
+int ConfigurationWindowBackend::getMinSoundDelayInMs() {
     return m_minSoundDelayInMs;
 }
 
-const int& ConfigurationWindowBackend::getMaxSoundDelayInMs() {
+int ConfigurationWindowBackend::getMaxSoundDelayInMs() {
     return m_maxSoundDelayInMs;
 }
 
-const bool& ConfigurationWindowBackend::getIsToMonitorFolder() {
+bool ConfigurationWindowBackend::getIsToMonitorFolder() {
     return m_isToMonitorFolder;
 }
 
@@ -52,14 +52,14 @@ void ConfigurationWindowBackend::setFolderPath(const QString& folderPath) {
     m_folderPath = folderPath;
 }
 
-void ConfigurationWindowBackend::setMinSoundDelayInMs(const int& minSoundDelayInMs) {
+void ConfigurationWindowBackend::setMinSoundDelayInMs(int minSoundDelayInMs) {
     m_minSoundDelayInMs = minSoundDelayInMs;
 }
 
-void ConfigurationWindowBackend::setMaxSoundDelayInMs(const int& maxSoundDelayInMs) {
+void ConfigurationWindowBackend::setMaxSoundDelayInMs(int maxSoundDelayInMs) {
     m_maxSoundDelayInMs = maxSoundDelayInMs;
 }
 
-void ConfigurationWindowBackend::setIsToMonitorFolder(const bool& isToMonitorFolder) {
+void ConfigurationWindowBackend::setIsToMonitorFolder(bool isToMonitorFolder) {
     m_isToMonitorFolder = isToMonitorFolder;
 }

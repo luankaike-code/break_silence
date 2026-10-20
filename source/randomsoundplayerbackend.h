@@ -32,14 +32,14 @@ public:
     void forceSoundPathsUpdate();
 
     const QString& getFolderPath();
-    const int& getMinSoundDelay();
-    const int& getMaxSoundDelay();
-    const bool& getIsToMonitorFolder();
+    int getMinSoundDelay();
+    int getMaxSoundDelay();
+    bool getIsToMonitorFolder();
 
     void setFolderPath(const QString& folderPath);
-    void setMinSoundDelay(const int& minSoundDelay);
-    void setMaxSoundDelay(const int& maxSoundDelay);
-    void setIsToMonitorFolder(const bool& isToMonitorFolder);
+    void setMinSoundDelay(int minSoundDelay);
+    void setMaxSoundDelay(int maxSoundDelay);
+    void setIsToMonitorFolder(bool isToMonitorFolder);
 
 signals:
     void errorSoundNotFound(const QString& soundPath);
