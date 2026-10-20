@@ -28,7 +28,19 @@ Dialog {
         return maxSoundDelayInput.getValue()
     }
 
+    function getMinSoundVolume() {
+        return minSoundVolumeInput.getValue()
+    }
+
+    function getMaxSoundVolume() {
+        return maxSoundVolumeInput.getValue()
+    }
+
     function setErrorInvalidMinMaxDelayInterval() {
+        rootFunctions.setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
+    }
+
+    function setErrorInvalidMinMaxSoundInterval() {
         rootFunctions.setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
     }
 
@@ -97,6 +109,30 @@ Dialog {
                 currentIndex: 2
 
                 model: rootVariables.timeMagnitudes
+            }
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+
+            InputNumber {
+                id: minSoundVolumeInput
+                placeholderText: qsTr("Volume mínimo")
+                text: "80"
+
+                Layout.preferredWidth: root.inputWidth
+            }
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+
+            InputNumber {
+                id: maxSoundVolumeInput
+                placeholderText: qsTr("Volume máximo")
+                text: "100"
+
+                Layout.preferredWidth: root.inputWidth
             }
         }
 
