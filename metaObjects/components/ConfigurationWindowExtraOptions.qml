@@ -133,5 +133,14 @@ Dialog {
                 Material.foreground: Material.Red
             }
         }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignCenter
+
+            Button {
+                text: qsTr("fechar")
+                onClicked: root.close()
+            }
+        }
     }
 }
