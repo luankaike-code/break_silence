@@ -17,7 +17,14 @@ void ConfigurationWindowBackend::startSession() {
     if (m_minSoundDelayInMs > m_maxSoundDelayInMs) {
         errorInvalidMinMaxDelayInterval();
         return;
-    } else if (!folderFileInfo.exists() || folderFileInfo.isFile()) {
+    }
+
+    if (m_minSoundVolume > m_maxSoundVolume) {
+        errorInvalidMinMaxVolumeInterval();
+        return;
+    }
+
+    if (!folderFileInfo.exists() || folderFileInfo.isFile()) {
         errorInvalidFolder();
         return;
     }
@@ -44,6 +51,14 @@ int ConfigurationWindowBackend::getMaxSoundDelayInMs() {
     return m_maxSoundDelayInMs;
 }
 
+int ConfigurationWindowBackend::getMinSoundVolume() {
+    return m_minSoundVolume;
+}
+
+int ConfigurationWindowBackend::getMaxSoundVolume() {
+    return m_maxSoundVolume;
+}
+
 bool ConfigurationWindowBackend::getIsToMonitorFolder() {
     return m_isToMonitorFolder;
 }
@@ -58,6 +73,14 @@ void ConfigurationWindowBackend::setMinSoundDelayInMs(int minSoundDelayInMs) {
 
 void ConfigurationWindowBackend::setMaxSoundDelayInMs(int maxSoundDelayInMs) {
     m_maxSoundDelayInMs = maxSoundDelayInMs;
+}
+
+void ConfigurationWindowBackend::setMinSoundVolume(int minSoundVolume) {
+    m_minSoundVolume = minSoundVolume;
+}
+
+void ConfigurationWindowBackend::setMaxSoundVolume(int maxSoundVolume) {
+    m_maxSoundVolume = maxSoundVolume;
 }
 
 void ConfigurationWindowBackend::setIsToMonitorFolder(bool isToMonitorFolder) {
