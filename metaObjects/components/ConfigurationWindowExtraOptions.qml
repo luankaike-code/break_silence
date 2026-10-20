@@ -29,19 +29,19 @@ Dialog {
     }
 
     function getMinSoundVolume() {
-        return minSoundVolumeInput.getValue()
+        return minSoundVolumeInput.text === ""? 0 : parseInt(minSoundVolumeInput.text)/100
     }
 
     function getMaxSoundVolume() {
-        return maxSoundVolumeInput.getValue()
+        return maxSoundVolumeInput.text === ""? 0 : parseInt(maxSoundVolumeInput.text)/100
     }
 
     function setErrorInvalidMinMaxDelayInterval() {
-        rootFunctions.setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
+        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do tempo é inválido", [minSoundDelayInput, maxSoundDelayInput])
     }
 
-    function setErrorInvalidMinMaxSoundInterval() {
-        rootFunctions.setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
+    function setErrorInvalidMinMaxVolumeInterval() {
+        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do volume é inválido", [minSoundDelayInput, maxSoundDelayInput])
     }
 
     function clearErrors() {
