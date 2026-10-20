@@ -31,6 +31,14 @@ BaseWindow {
         return extraOptions.getMaxSoundDelay()
     }
 
+    function getMinSoundVolume() {
+        return extraOptions.getMinSoundVolume()
+    }
+
+    function getMaxSoundVolume() {
+        return extraOptions.getMaxSoundVolume()
+    }
+
     QtObject {
         id: rootVariables
 
@@ -62,6 +70,8 @@ BaseWindow {
         folderPath: { return root.getFolderPath() }
         minSoundDelayInMs: { return root.getMinSoundDelay() }
         maxSoundDelayInMs: { return root.getMaxSoundDelay() }
+        minSoundVolume: { return root.getMinSoundVolume() }
+        maxSoundVolume: { return root.getMaxSoundVolume() }
         isToMonitorFolder: { return root.getIsToMonitorFolder() }
 
         onSessionStarted: {
@@ -70,6 +80,7 @@ BaseWindow {
         }
 
         onErrorInvalidMinMaxDelayInterval: extraOptions.setErrorInvalidMinMaxDelayInterval()
+        onErrorInvalidMinMaxVolumeInterval: extraOptions.setErrorInvalidMinMaxVolumeInterval()
         onErrorInvalidFolder: rootFunctions.setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
         onErrorEmptyFolder: rootFunctions.setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
