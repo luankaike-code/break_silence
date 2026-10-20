@@ -28,26 +28,14 @@ Dialog {
         return maxSoundDelayInput.getValue()
     }
 
+    function setErrorInvalidMinMaxDelayInterval() {
+        rootFunctions.setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
+    }
+
     function clearErrors() {
         labelError.text = ""
         minSoundDelayInput.isEmphasisError = false
         maxSoundDelayInput.isEmphasisError = false
-    }
-
-    function setCurrentError(errorText, inputsToEmphasis=[]) {
-        clearErrors()
-        labelError.text = qsTr(errorText)
-
-        for (const inputToEmphasis of inputsToEmphasis) {
-            if (inputToEmphasis)
-                inputToEmphasis.isEmphasisError = true
-        }
-        root.open()
-    }
-
-
-    function setErrorInvalidMinMaxDelayInterval() {
-        setCurrentError("O intervalo de mínimo e mximo é inválido", [minSoundDelayInput, maxSoundDelayInput])
     }
 
     InformativeDialog {
@@ -65,6 +53,21 @@ Dialog {
             { value: 1000*60, text: qsTr("Min") },
             { value: 1000*60*60, text: qsTr("Hr") },
         ]
+    }
+
+    QtObject {
+        id: rootFunctions
+
+        function setCurrentError(errorText, inputsToEmphasis=[]) {
+            root,clearErrors()
+            labelError.text = qsTr(errorText)
+
+            for (const inputToEmphasis of inputsToEmphasis) {
+                if (inputToEmphasis)
+                    inputToEmphasis.isEmphasisError = true
+            }
+            root.open()
+        }
     }
 
     ColumnLayout {
