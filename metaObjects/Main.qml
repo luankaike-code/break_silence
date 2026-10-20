@@ -1,22 +1,17 @@
 import QtQuick
 import "components"
 
-Window {
-    id: root
-    width: 640
-    height: 480
-    visible: false
-    title: qsTr("THIS WINDOW WAS NOT SUPPOSED TO BE VISIBLE")
+ConfigurationWindow {
+    id: configurationWindow
+    visible: true
+    onSessionStarted: {
+        console.log("Session started")
+        randomSoundPlayer.play()
+    }
 
-    Component.onCompleted: configurationWindow.show()
-
-    ConfigurationWindow {
-        id: configurationWindow
-        visible: true
-        onSessionStarted: {
-            console.log("Session started")
-            randomSoundPlayer.play()
-        }
+    onClosing: (closeEvent) => {
+        closeEvent.accepted = false
+        configurationWindow.hide()
     }
 
     RandomSoundPlayer {
