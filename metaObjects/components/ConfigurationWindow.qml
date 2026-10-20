@@ -31,21 +31,6 @@ BaseWindow {
         return extraOptions.getMaxSoundDelay()
     }
 
-    function clearCurrentError() {
-        labelError.text = ""
-        folderInput.isEmphasisError = false
-        extraOptions.clearErrors()
-    }
-
-    function setCurrentError(errorText, inputsToEmphasis=[]) {
-        labelError.text = qsTr(errorText)
-
-        for (const inputToEmphasis of inputsToEmphasis) {
-            if (inputToEmphasis)
-                inputToEmphasis.isEmphasisError = true
-        }
-    }
-
     ConfigurationWindowBackend {
         id: configurationWindowBackend
         folderPath: { return root.getFolderPath() }
@@ -59,8 +44,8 @@ BaseWindow {
         }
 
         onErrorInvalidMinMaxDelayInterval: extraOptions.setErrorInvalidMinMaxDelayInterval()
-        onErrorInvalidFolder: setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
-        onErrorEmptyFolder: setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
+        onErrorInvalidFolder: rootFuncs.setCurrentError("O caminho para a pasta de audios é inválida", [folderInput])
+        onErrorEmptyFolder: rootFuncs.setCurrentError("A pasta de audios não contém nenhum aquivo de audio válido", [folderInput])
     }
 
     QtObject {
@@ -68,6 +53,25 @@ BaseWindow {
 
         property int inputWidth: 350
         property int emphasisConteinersHeight: 50
+    }
+
+    QtObject {
+        id: rootFuncs
+
+        function clearErrors() {
+            labelError.text = ""
+            folderInput.isEmphasisError = false
+            extraOptions.clearErrors()
+        }
+
+        function setCurrentError(errorText, inputsToEmphasis=[]) {
+            labelError.text = qsTr(errorText)
+
+            for (const inputToEmphasis of inputsToEmphasis) {
+                if (inputToEmphasis)
+                    inputToEmphasis.isEmphasisError = true
+            }
+        }
     }
 
     ConfigurationWindowExtraOptions {
@@ -134,7 +138,7 @@ BaseWindow {
             Button {
                 text: "Iniciar"
                 onClicked: {
-                    clearCurrentError()
+                    rootFuncs.clearErrors()
                     configurationWindowBackend.startSession()
                 }
             }
