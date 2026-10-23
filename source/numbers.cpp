@@ -11,3 +11,12 @@ int Numbers::getRandomInt(int min, int max) {
 
     return distrib(gen);
 }
+
+double Numbers::getRandomDouble(double min, double max) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    std::uniform_real_distribution<double> distrib(min, max);
+
+    return distrib(gen);
+}

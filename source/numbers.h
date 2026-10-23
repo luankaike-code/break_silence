@@ -7,6 +7,7 @@ public:
     Numbers();
 
     static int getRandomInt(int min, int max);
+    static double getRandomDouble(double min, double max);
 };
 
 #endif // NUMBERS_H
