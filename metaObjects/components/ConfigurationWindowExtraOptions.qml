@@ -29,11 +29,11 @@ Dialog {
     }
 
     function getMinSoundVolume() {
-        return minSoundVolumeInput.text === ""? 0 : parseInt(minSoundVolumeInput.text)/100
+        return minSoundVolumeInput.text === ""? 0 : parseFloat(minSoundVolumeInput.text)/100
     }
 
     function getMaxSoundVolume() {
-        return maxSoundVolumeInput.text === ""? 0 : parseInt(maxSoundVolumeInput.text)/100
+        return maxSoundVolumeInput.text === ""? 0 : parseFloat(maxSoundVolumeInput.text)/100
     }
 
     function setErrorInvalidMinMaxDelayInterval() {
