@@ -36,6 +36,10 @@ int RandomSoundPlayerBackend::getDelayToNextSoundInMs() {
     return Numbers::getRandomInt(getMinSoundDelay(), getMaxSoundDelay());
 }
 
+double RandomSoundPlayerBackend::getVolumeToNextSound() {
+    return Numbers::getRandomDouble(getMinSoundVolume(), getMaxSoundVolume());
+}
+
 void RandomSoundPlayerBackend::forceSoundPathsUpdate() {
     m_soundPaths = Files::getAllAudiosAtFolder(getFolderPath());
 }
@@ -53,6 +57,14 @@ int RandomSoundPlayerBackend::getMinSoundDelay() {
 
 int RandomSoundPlayerBackend::getMaxSoundDelay() {
     return m_maxSoundDelay;
+}
+
+double RandomSoundPlayerBackend::getMinSoundVolume() {
+    return m_minSoundVolume;
+}
+
+double RandomSoundPlayerBackend::getMaxSoundVolume() {
+    return m_maxSoundVolume;
 }
 
 bool RandomSoundPlayerBackend::getIsToMonitorFolder() {
@@ -73,6 +85,15 @@ void RandomSoundPlayerBackend::setMinSoundDelay(int minSoundDelay) {
 void RandomSoundPlayerBackend::setMaxSoundDelay(int maxSoundDelay) {
     m_maxSoundDelay = maxSoundDelay;
 }
+
+void RandomSoundPlayerBackend::setMinSoundVolume(double minSoundVolume) {
+    m_minSoundVolume = minSoundVolume;
+}
+
+void RandomSoundPlayerBackend::setMaxSoundVolume(double maxSoundVolume) {
+    m_maxSoundVolume = maxSoundVolume;
+}
+
 
 void RandomSoundPlayerBackend::setIsToMonitorFolder(bool isToMonitorFolder) {
     m_isToMonitorFolder = isToMonitorFolder;
