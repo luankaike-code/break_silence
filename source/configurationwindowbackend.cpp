@@ -19,6 +19,8 @@ void ConfigurationWindowBackend::startSession() {
         return;
     }
 
+    std::cout << "min" << m_minSoundVolume << m_maxSoundVolume <<std::endl;
+
     if (m_minSoundVolume > m_maxSoundVolume) {
         errorInvalidMinMaxVolumeInterval();
         return;
@@ -51,11 +53,11 @@ int ConfigurationWindowBackend::getMaxSoundDelayInMs() {
     return m_maxSoundDelayInMs;
 }
 
-int ConfigurationWindowBackend::getMinSoundVolume() {
+double ConfigurationWindowBackend::getMinSoundVolume() {
     return m_minSoundVolume;
 }
 
-int ConfigurationWindowBackend::getMaxSoundVolume() {
+double ConfigurationWindowBackend::getMaxSoundVolume() {
     return m_maxSoundVolume;
 }
 
@@ -75,11 +77,11 @@ void ConfigurationWindowBackend::setMaxSoundDelayInMs(int maxSoundDelayInMs) {
     m_maxSoundDelayInMs = maxSoundDelayInMs;
 }
 
-void ConfigurationWindowBackend::setMinSoundVolume(int minSoundVolume) {
+void ConfigurationWindowBackend::setMinSoundVolume(double minSoundVolume) {
     m_minSoundVolume = minSoundVolume;
 }
 
-void ConfigurationWindowBackend::setMaxSoundVolume(int maxSoundVolume) {
+void ConfigurationWindowBackend::setMaxSoundVolume(double maxSoundVolume) {
     m_maxSoundVolume = maxSoundVolume;
 }
 
