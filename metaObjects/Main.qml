@@ -19,6 +19,8 @@ ConfigurationWindow {
         folderPath: { return configurationWindow.getFolderPath() }
         minSoundDelay: { return configurationWindow.getMinSoundDelay() }
         maxSoundDelay: { return configurationWindow.getMaxSoundDelay() }
+        minSoundVolume: { return configurationWindow.getMinSoundVolume() }
+        maxSoundVolume: { return configurationWindow.getMaxSoundVolume() }
         isToMonitorFolder: { return configurationWindow.getIsToMonitorFolder() }
     }
 
