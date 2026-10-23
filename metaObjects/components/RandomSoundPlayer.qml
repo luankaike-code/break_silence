@@ -17,7 +17,6 @@ Item {
     required property real maxSoundVolume
 
     function play() {
-        console.log(minSoundVolume, maxSoundVolume)
         playTimer()
     }
 
@@ -37,7 +36,7 @@ Item {
         audioOutput.volume = backend.getVolumeToNextSound()
 
         console.log("played sound:", mediaPlayer.source)
-        console.log("sound volume :", audioOutput.volume)
+        console.log("sound volume:", audioOutput.volume)
 
         mediaPlayer.play()
     }
