@@ -23,12 +23,12 @@ BaseWindow {
         return extraOptions.getIsToMonitorFolder()
     }
 
-    function getMinSoundDelay() {
-        return extraOptions.getMinSoundDelay()
+    function getMinSoundDelayInMs() {
+        return extraOptions.getMinSoundDelayInMs()
     }
 
-    function getMaxSoundDelay() {
-        return extraOptions.getMaxSoundDelay()
+    function getMaxSoundDelayInMs() {
+        return extraOptions.getMaxSoundDelayInMs()
     }
 
     function getMinSoundVolume() {
@@ -68,8 +68,8 @@ BaseWindow {
     ConfigurationWindowBackend {
         id: configurationWindowBackend
         folderPath: { return root.getFolderPath() }
-        minSoundDelayInMs: { return root.getMinSoundDelay() }
-        maxSoundDelayInMs: { return root.getMaxSoundDelay() }
+        minSoundDelayInMs: { return root.getMinSoundDelayInMs() }
+        maxSoundDelayInMs: { return root.getMaxSoundDelayInMs() }
         minSoundVolume: { return root.getMinSoundVolume() }
         maxSoundVolume: { return root.getMaxSoundVolume() }
         isToMonitorFolder: { return root.getIsToMonitorFolder() }

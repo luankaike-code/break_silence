@@ -11,8 +11,8 @@ Item {
 
     required property string folderPath
     required property bool isToMonitorFolder
-    required property int minSoundDelay
-    required property int maxSoundDelay
+    required property int minSoundDelayInMs
+    required property int maxSoundDelayInMs
     required property real minSoundVolume
     required property real maxSoundVolume
 
@@ -46,8 +46,8 @@ Item {
 
         folderPath: root.folderPath
         isToMonitorFolder: root.isToMonitorFolder
-        minSoundDelay: root.minSoundDelay
-        maxSoundDelay: root.maxSoundDelay
+        minSoundDelayInMs: root.minSoundDelayInMs
+        maxSoundDelayInMs: root.maxSoundDelayInMs
         minSoundVolume: root.minSoundVolume
         maxSoundVolume: root.maxSoundVolume
 

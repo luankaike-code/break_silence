@@ -22,12 +22,12 @@ Dialog {
         return isToMonitorFolderCheckbox.checked
     }
 
-    function getMinSoundDelay() {
-        return minSoundDelayInput.getValue()
+    function getMinSoundDelayInMs() {
+        return minSoundDelayInMsInput.getValue()
     }
 
-    function getMaxSoundDelay() {
-        return maxSoundDelayInput.getValue()
+    function getMaxSoundDelayInMs() {
+        return maxSoundDelayInMsInput.getValue()
     }
 
     function getMinSoundVolume() {
@@ -39,17 +39,17 @@ Dialog {
     }
 
     function setErrorInvalidMinMaxDelayInterval() {
-        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do tempo é inválido", [minSoundDelayInput, maxSoundDelayInput])
+        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do tempo é inválido", [minSoundDelayInMsInput, maxSoundDelayInMsInput])
     }
 
     function setErrorInvalidMinMaxVolumeInterval() {
-        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do volume é inválido", [minSoundDelayInput, maxSoundDelayInput])
+        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do volume é inválido", [minSoundDelayInMsInput, maxSoundDelayInMsInput])
     }
 
     function clearErrors() {
         labelError.text = ""
-        minSoundDelayInput.isEmphasisError = false
-        maxSoundDelayInput.isEmphasisError = false
+        minSoundDelayInMsInput.isEmphasisError = false
+        maxSoundDelayInMsInput.isEmphasisError = false
     }
 
     QtObject {
@@ -97,7 +97,7 @@ Dialog {
                 Layout.alignment: Qt.AlignHCenter
 
                 InputNumberWithMagnitude {
-                    id: minSoundDelayInput
+                    id: minSoundDelayInMsInput
                     placeholderText: qsTr("Tempo mínimo")
                     conteinerWidth: root.inputWidth
 
@@ -109,7 +109,7 @@ Dialog {
                 Layout.alignment: Qt.AlignHCenter
 
                 InputNumberWithMagnitude {
-                    id: maxSoundDelayInput
+                    id: maxSoundDelayInMsInput
                     placeholderText: qsTr("Tempo máximo")
                     conteinerWidth: root.inputWidth
 

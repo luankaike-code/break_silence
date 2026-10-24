@@ -8,8 +8,8 @@
 
 RandomSoundPlayerBackend::RandomSoundPlayerBackend(QObject *parent)
     : QObject{parent},
-    m_maxSoundDelay(0),
-    m_minSoundDelay(0)
+    m_maxSoundDelayInMs(0),
+    m_minSoundDelayInMs(0)
 {}
 
 QString RandomSoundPlayerBackend::getRandomSoundOnFolder() {
@@ -33,7 +33,7 @@ QString RandomSoundPlayerBackend::getRandomSoundOnFolder() {
 }
 
 int RandomSoundPlayerBackend::getDelayToNextSoundInMs() {
-    return Numbers::getRandomInt(getMinSoundDelay(), getMaxSoundDelay());
+    return Numbers::getRandomInt(getMinSoundDelayInMs(), getMaxSoundDelayInMs());
 }
 
 double RandomSoundPlayerBackend::getVolumeToNextSound() {
@@ -51,12 +51,12 @@ QStringList RandomSoundPlayerBackend::getSoundPaths() {
     return m_soundPaths;
 }
 
-int RandomSoundPlayerBackend::getMinSoundDelay() {
-    return m_minSoundDelay;
+int RandomSoundPlayerBackend::getMinSoundDelayInMs() {
+    return m_minSoundDelayInMs;
 }
 
-int RandomSoundPlayerBackend::getMaxSoundDelay() {
-    return m_maxSoundDelay;
+int RandomSoundPlayerBackend::getMaxSoundDelayInMs() {
+    return m_maxSoundDelayInMs;
 }
 
 double RandomSoundPlayerBackend::getMinSoundVolume() {
@@ -78,12 +78,12 @@ QString RandomSoundPlayerBackend::getFolderPath() {
 void RandomSoundPlayerBackend::setFolderPath(const QString& folderPath) {
     m_folderPath = folderPath;
 }
-void RandomSoundPlayerBackend::setMinSoundDelay(int minSoundDelay) {
-    m_minSoundDelay = minSoundDelay;
+void RandomSoundPlayerBackend::setMinSoundDelayInMs(int minSoundDelayInMs) {
+    m_minSoundDelayInMs = minSoundDelayInMs;
 }
 
-void RandomSoundPlayerBackend::setMaxSoundDelay(int maxSoundDelay) {
-    m_maxSoundDelay = maxSoundDelay;
+void RandomSoundPlayerBackend::setMaxSoundDelayInMs(int maxSoundDelayInMs) {
+    m_maxSoundDelayInMs = maxSoundDelayInMs;
 }
 
 void RandomSoundPlayerBackend::setMinSoundVolume(double minSoundVolume) {

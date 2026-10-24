@@ -11,16 +11,16 @@ class RandomSoundPlayerBackend : public QObject
     QML_ELEMENT
 
     Q_PROPERTY(QString folderPath READ getFolderPath WRITE setFolderPath REQUIRED)
-    Q_PROPERTY(int minSoundDelay READ getMinSoundDelay WRITE setMinSoundDelay REQUIRED)
-    Q_PROPERTY(int maxSoundDelay READ getMaxSoundDelay WRITE setMaxSoundDelay REQUIRED)
+    Q_PROPERTY(int minSoundDelayInMs READ getMinSoundDelayInMs WRITE setMinSoundDelayInMs REQUIRED)
+    Q_PROPERTY(int maxSoundDelayInMs READ getMaxSoundDelayInMs WRITE setMaxSoundDelayInMs REQUIRED)
     Q_PROPERTY(double minSoundVolume READ getMinSoundVolume WRITE setMinSoundVolume REQUIRED)
     Q_PROPERTY(double maxSoundVolume READ getMaxSoundVolume WRITE setMaxSoundVolume REQUIRED)
     Q_PROPERTY(bool isToMonitorFolder READ getIsToMonitorFolder WRITE setIsToMonitorFolder REQUIRED)
 
 
     QString m_folderPath;
-    int m_minSoundDelay;
-    int m_maxSoundDelay;
+    int m_minSoundDelayInMs;
+    int m_maxSoundDelayInMs;
     double m_minSoundVolume;
     double m_maxSoundVolume;
     bool m_isToMonitorFolder;
@@ -37,15 +37,15 @@ public:
     void forceSoundPathsUpdate();
 
     QString getFolderPath();
-    int getMinSoundDelay();
-    int getMaxSoundDelay();
+    int getMinSoundDelayInMs();
+    int getMaxSoundDelayInMs();
     double getMinSoundVolume();
     double getMaxSoundVolume();
     bool getIsToMonitorFolder();
 
     void setFolderPath(const QString& folderPath);
-    void setMinSoundDelay(int minSoundDelay);
-    void setMaxSoundDelay(int maxSoundDelay);
+    void setMinSoundDelayInMs(int minSoundDelayInMs);
+    void setMaxSoundDelayInMs(int maxSoundDelayInMs);
     void setMinSoundVolume(double minSoundVolume);
     void setMaxSoundVolume(double maxSoundVolume);
     void setIsToMonitorFolder(bool isToMonitorFolder);
