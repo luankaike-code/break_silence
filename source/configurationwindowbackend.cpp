@@ -19,8 +19,6 @@ void ConfigurationWindowBackend::startSession() {
         return;
     }
 
-    std::cout << "min" << m_minSoundVolumeNormalized << m_maxSoundVolumeNormalized <<std::endl;
-
     if (m_minSoundVolumeNormalized > m_maxSoundVolumeNormalized) {
         errorInvalidMinMaxVolumeInterval();
         return;
