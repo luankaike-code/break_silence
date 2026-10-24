@@ -8,6 +8,8 @@ Dialog {
     id: root
     title: qsTr("Opções extras")
     visible: false
+    height: parent.height-100
+    width: parent.width-100
 
     Material.theme: parent.Material.theme
 
@@ -82,100 +84,107 @@ Dialog {
         text: qsTr("Se ativado, a pasta sempre será reanalisada em busca de novos sons. Isso permite que novos sons Possam serem adicionados mesmo se o programa estiver em execução.")
     }
 
-    ColumnLayout {
-        Layout.alignment: Qt.AlignHCenter
+    ScrollView {
+        id: a
+        anchors.fill: parent
 
-        RowLayout {
+        ColumnLayout {
+            width: a.width
+            x: a.width/2-width/2
             Layout.alignment: Qt.AlignHCenter
 
-            InputNumberWithMagnitude {
-                id: minSoundDelayInput
-                placeholderText: qsTr("Tempo mínimo")
-                conteinerWidth: root.inputWidth
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
 
-                model: rootVariables.timeMagnitudes
-            }
-        }
+                InputNumberWithMagnitude {
+                    id: minSoundDelayInput
+                    placeholderText: qsTr("Tempo mínimo")
+                    conteinerWidth: root.inputWidth
 
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-
-            InputNumberWithMagnitude {
-                id: maxSoundDelayInput
-                placeholderText: qsTr("Tempo máximo")
-                conteinerWidth: root.inputWidth
-
-                inputDefaultValue: 30
-                currentIndex: 2
-
-                model: rootVariables.timeMagnitudes
-            }
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-
-            InputNumber {
-                id: minSoundVolumeInput
-                placeholderText: qsTr("Volume mínimo")
-                text: "80"
-
-                Layout.preferredWidth: root.inputWidth
-            }
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-
-            InputNumber {
-                id: maxSoundVolumeInput
-                placeholderText: qsTr("Volume máximo")
-                text: "100"
-
-                Layout.preferredWidth: root.inputWidth
-            }
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignCenter
-            spacing: 1
-
-            Label {
-                text: qsTr("Monitorar a pasta")
-            }
-
-            ButtonImage {
-                source: "qrc:/assets/question_mark-svgrepo_com.svg"
-
-                onClicked: informativeDialogMonitorarFolder.open()
-                width: 10
-                transform: Translate {
-                    x: -1
-                    y: -5
+                    model: rootVariables.timeMagnitudes
                 }
             }
 
-            CheckBox {
-                id: isToMonitorFolderCheckbox
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+
+                InputNumberWithMagnitude {
+                    id: maxSoundDelayInput
+                    placeholderText: qsTr("Tempo máximo")
+                    conteinerWidth: root.inputWidth
+
+                    inputDefaultValue: 30
+                    currentIndex: 2
+
+                    model: rootVariables.timeMagnitudes
+                }
             }
-        }
 
-        RowLayout {
-            Layout.alignment: Qt.AlignCenter
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
 
-            Label {
-                id: labelError
-                text: ""
-                Material.foreground: Material.Red
+                InputNumber {
+                    id: minSoundVolumeInput
+                    placeholderText: qsTr("Volume mínimo")
+                    text: "80"
+
+                    Layout.preferredWidth: root.inputWidth
+                }
             }
-        }
 
-        RowLayout {
-            Layout.alignment: Qt.AlignCenter
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
 
-            Button {
-                text: qsTr("fechar")
-                onClicked: root.close()
+                InputNumber {
+                    id: maxSoundVolumeInput
+                    placeholderText: qsTr("Volume máximo")
+                    text: "100"
+
+                    Layout.preferredWidth: root.inputWidth
+                }
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignCenter
+                spacing: 1
+
+                Label {
+                    text: qsTr("Monitorar a pasta")
+                }
+
+                ButtonImage {
+                    source: "qrc:/assets/question_mark-svgrepo_com.svg"
+
+                    onClicked: informativeDialogMonitorarFolder.open()
+                    width: 10
+                    transform: Translate {
+                        x: -1
+                        y: -5
+                    }
+                }
+
+                CheckBox {
+                    id: isToMonitorFolderCheckbox
+                }
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignCenter
+
+                Label {
+                    id: labelError
+                    text: ""
+                    Material.foreground: Material.Red
+                }
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignCenter
+
+                Button {
+                    text: qsTr("fechar")
+                    onClicked: root.close()
+                }
             }
         }
     }
