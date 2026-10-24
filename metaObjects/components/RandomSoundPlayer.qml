@@ -13,8 +13,8 @@ Item {
     required property bool isToMonitorFolder
     required property int minSoundDelayInMs
     required property int maxSoundDelayInMs
-    required property real minSoundVolume
-    required property real maxSoundVolume
+    required property real minSoundVolumeNormalized
+    required property real maxSoundVolumeNormalized
 
     function play() {
         playTimer()
@@ -33,7 +33,7 @@ Item {
 
     function playSound() {
         mediaPlayer.source = backend.getRandomSoundOnFolder()
-        audioOutput.volume = backend.getVolumeToNextSound()
+        audioOutput.volume = backend.getVolumeNormalizedToNextSound()
 
         console.log("played sound:", mediaPlayer.source)
         console.log("sound volume:", audioOutput.volume)
@@ -48,8 +48,8 @@ Item {
         isToMonitorFolder: root.isToMonitorFolder
         minSoundDelayInMs: root.minSoundDelayInMs
         maxSoundDelayInMs: root.maxSoundDelayInMs
-        minSoundVolume: root.minSoundVolume
-        maxSoundVolume: root.maxSoundVolume
+        minSoundVolumeNormalized: root.minSoundVolumeNormalized
+        maxSoundVolumeNormalized: root.maxSoundVolumeNormalized
 
         onErrorSoundNotFound: function (soundPath) {
             console.log("sound not found:", soundPath)

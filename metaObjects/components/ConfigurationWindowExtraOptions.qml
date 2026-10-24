@@ -30,11 +30,11 @@ Dialog {
         return maxSoundDelayInMsInput.getValue()
     }
 
-    function getMinSoundVolume() {
+    function getMinSoundVolumeNormalized() {
         return minSoundVolumeInput.text === ""? 0 : parseFloat(minSoundVolumeInput.text)/100
     }
 
-    function getMaxSoundVolume() {
+    function getMaxSoundVolumeNormalized() {
         return maxSoundVolumeInput.text === ""? 0 : parseFloat(maxSoundVolumeInput.text)/100
     }
 

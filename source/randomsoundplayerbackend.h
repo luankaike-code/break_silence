@@ -13,16 +13,16 @@ class RandomSoundPlayerBackend : public QObject
     Q_PROPERTY(QString folderPath READ getFolderPath WRITE setFolderPath REQUIRED)
     Q_PROPERTY(int minSoundDelayInMs READ getMinSoundDelayInMs WRITE setMinSoundDelayInMs REQUIRED)
     Q_PROPERTY(int maxSoundDelayInMs READ getMaxSoundDelayInMs WRITE setMaxSoundDelayInMs REQUIRED)
-    Q_PROPERTY(double minSoundVolume READ getMinSoundVolume WRITE setMinSoundVolume REQUIRED)
-    Q_PROPERTY(double maxSoundVolume READ getMaxSoundVolume WRITE setMaxSoundVolume REQUIRED)
+    Q_PROPERTY(double minSoundVolumeNormalized READ getMinSoundVolumeNormalized WRITE setMinSoundVolumeNormalized REQUIRED)
+    Q_PROPERTY(double maxSoundVolumeNormalized READ getMaxSoundVolumeNormalized WRITE setMaxSoundVolumeNormalized REQUIRED)
     Q_PROPERTY(bool isToMonitorFolder READ getIsToMonitorFolder WRITE setIsToMonitorFolder REQUIRED)
 
 
     QString m_folderPath;
     int m_minSoundDelayInMs;
     int m_maxSoundDelayInMs;
-    double m_minSoundVolume;
-    double m_maxSoundVolume;
+    double m_minSoundVolumeNormalized;
+    double m_maxSoundVolumeNormalized;
     bool m_isToMonitorFolder;
 
     QStringList m_soundPaths;
@@ -31,7 +31,7 @@ public:
 
     Q_INVOKABLE QString getRandomSoundOnFolder();
     Q_INVOKABLE int getDelayToNextSoundInMs();
-    Q_INVOKABLE double getVolumeToNextSound();
+    Q_INVOKABLE double getVolumeNormalizedToNextSound();
 
     QStringList getSoundPaths();
     void forceSoundPathsUpdate();
@@ -39,15 +39,15 @@ public:
     QString getFolderPath();
     int getMinSoundDelayInMs();
     int getMaxSoundDelayInMs();
-    double getMinSoundVolume();
-    double getMaxSoundVolume();
+    double getMinSoundVolumeNormalized();
+    double getMaxSoundVolumeNormalized();
     bool getIsToMonitorFolder();
 
     void setFolderPath(const QString& folderPath);
     void setMinSoundDelayInMs(int minSoundDelayInMs);
     void setMaxSoundDelayInMs(int maxSoundDelayInMs);
-    void setMinSoundVolume(double minSoundVolume);
-    void setMaxSoundVolume(double maxSoundVolume);
+    void setMinSoundVolumeNormalized(double minSoundVolumeNormalized);
+    void setMaxSoundVolumeNormalized(double maxSoundVolumeNormalized);
     void setIsToMonitorFolder(bool isToMonitorFolder);
 
 signals:

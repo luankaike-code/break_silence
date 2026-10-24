@@ -36,8 +36,8 @@ int RandomSoundPlayerBackend::getDelayToNextSoundInMs() {
     return Numbers::getRandomInt(getMinSoundDelayInMs(), getMaxSoundDelayInMs());
 }
 
-double RandomSoundPlayerBackend::getVolumeToNextSound() {
-    return Numbers::getRandomDouble(getMinSoundVolume(), getMaxSoundVolume());
+double RandomSoundPlayerBackend::getVolumeNormalizedToNextSound() {
+    return Numbers::getRandomDouble(getMinSoundVolumeNormalized(), getMaxSoundVolumeNormalized());
 }
 
 void RandomSoundPlayerBackend::forceSoundPathsUpdate() {
@@ -59,12 +59,12 @@ int RandomSoundPlayerBackend::getMaxSoundDelayInMs() {
     return m_maxSoundDelayInMs;
 }
 
-double RandomSoundPlayerBackend::getMinSoundVolume() {
-    return m_minSoundVolume;
+double RandomSoundPlayerBackend::getMinSoundVolumeNormalized() {
+    return m_minSoundVolumeNormalized;
 }
 
-double RandomSoundPlayerBackend::getMaxSoundVolume() {
-    return m_maxSoundVolume;
+double RandomSoundPlayerBackend::getMaxSoundVolumeNormalized() {
+    return m_maxSoundVolumeNormalized;
 }
 
 bool RandomSoundPlayerBackend::getIsToMonitorFolder() {
@@ -86,12 +86,12 @@ void RandomSoundPlayerBackend::setMaxSoundDelayInMs(int maxSoundDelayInMs) {
     m_maxSoundDelayInMs = maxSoundDelayInMs;
 }
 
-void RandomSoundPlayerBackend::setMinSoundVolume(double minSoundVolume) {
-    m_minSoundVolume = minSoundVolume;
+void RandomSoundPlayerBackend::setMinSoundVolumeNormalized(double minSoundVolumeNormalized) {
+    m_minSoundVolumeNormalized = minSoundVolumeNormalized;
 }
 
-void RandomSoundPlayerBackend::setMaxSoundVolume(double maxSoundVolume) {
-    m_maxSoundVolume = maxSoundVolume;
+void RandomSoundPlayerBackend::setMaxSoundVolumeNormalized(double maxSoundVolumeNormalized) {
+    m_maxSoundVolumeNormalized = maxSoundVolumeNormalized;
 }
 
 

@@ -31,12 +31,12 @@ BaseWindow {
         return extraOptions.getMaxSoundDelayInMs()
     }
 
-    function getMinSoundVolume() {
-        return extraOptions.getMinSoundVolume()
+    function getMinSoundVolumeNormalized() {
+        return extraOptions.getMinSoundVolumeNormalized()
     }
 
-    function getMaxSoundVolume() {
-        return extraOptions.getMaxSoundVolume()
+    function getMaxSoundVolumeNormalized() {
+        return extraOptions.getMaxSoundVolumeNormalized()
     }
 
     QtObject {
@@ -70,8 +70,8 @@ BaseWindow {
         folderPath: { return root.getFolderPath() }
         minSoundDelayInMs: { return root.getMinSoundDelayInMs() }
         maxSoundDelayInMs: { return root.getMaxSoundDelayInMs() }
-        minSoundVolume: { return root.getMinSoundVolume() }
-        maxSoundVolume: { return root.getMaxSoundVolume() }
+        minSoundVolumeNormalized: { return root.getMinSoundVolumeNormalized() }
+        maxSoundVolumeNormalized: { return root.getMaxSoundVolumeNormalized() }
         isToMonitorFolder: { return root.getIsToMonitorFolder() }
 
         onSessionStarted: {
