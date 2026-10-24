@@ -85,12 +85,12 @@ Dialog {
     }
 
     ScrollView {
-        id: a
+        id: scrollView
         anchors.fill: parent
 
         ColumnLayout {
-            width: a.width
-            x: a.width/2-width/2
+            width: scrollView.width
+            x: scrollView.width/2-width/2
             Layout.alignment: Qt.AlignHCenter
 
             RowLayout {
