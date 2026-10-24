@@ -67,7 +67,7 @@ Dialog {
         id: rootFunctions
 
         function setCurrentError(errorText, inputsToEmphasis=[]) {
-            root,clearErrors()
+            root.clearErrors()
             labelError.text = qsTr(errorText)
 
             for (const inputToEmphasis of inputsToEmphasis) {
