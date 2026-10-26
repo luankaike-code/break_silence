@@ -26,7 +26,7 @@ RowLayout {
         id: input
         text: inputDefaultValue  < 0? "" : inputDefaultValue
         placeholderText: root.placeholderText
-        Layout.preferredWidth: conteinerWidth - magnitude.width
+        Layout.preferredWidth: conteinerWidth - magnitude.width - root.spacing
         isEmphasisError: root.isEmphasisError
         maxValue: root.maxValue
     }
