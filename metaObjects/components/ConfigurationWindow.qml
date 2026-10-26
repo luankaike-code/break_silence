@@ -7,8 +7,8 @@ import QtQuick.Layouts
 import BreakSilence.APP.MetaObjects
 
 BaseWindow {
-    width: 640
-    height: 480
+    minimumHeight: 480
+    minimumWidth: 640
     visible: true
     title: qsTr("BreakSilence - Configuration")
     id: root
