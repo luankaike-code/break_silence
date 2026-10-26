@@ -129,6 +129,8 @@ Dialog {
                     text: "80"
 
                     Layout.preferredWidth: root.inputWidth
+
+                    maxValue: 100
                 }
             }
 
@@ -141,6 +143,7 @@ Dialog {
                     text: "100"
 
                     Layout.preferredWidth: root.inputWidth
+                    maxValue: 100
                 }
             }
 
