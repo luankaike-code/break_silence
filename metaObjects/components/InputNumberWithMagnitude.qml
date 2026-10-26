@@ -8,6 +8,7 @@ RowLayout {
 
     required property variant model
 
+    property int maxValue: 0
     property int inputDefaultValue: -1
     property string placeholderText: qsTr("placeholderText")
     property bool isEmphasisError: false
@@ -27,6 +28,7 @@ RowLayout {
         placeholderText: root.placeholderText
         Layout.preferredWidth: conteinerWidth - magnitude.width
         isEmphasisError: root.isEmphasisError
+        maxValue: root.maxValue
     }
 
     ComboBox {
