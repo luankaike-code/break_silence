@@ -23,6 +23,10 @@ BaseWindow {
         return extraOptions.getIsToMonitorFolder()
     }
 
+    function getIsToNotifyPlayedSound() {
+        return extraOptions.getIsToNotifyPlayedSound()
+    }
+
     function getMinSoundDelayInMs() {
         return extraOptions.getMinSoundDelayInMs()
     }
