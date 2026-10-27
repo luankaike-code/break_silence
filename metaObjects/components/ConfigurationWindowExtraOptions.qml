@@ -22,6 +22,10 @@ Dialog {
         return isToMonitorFolderCheckbox.checked
     }
 
+    function getIsToNotifyPlayedSound() {
+        return isToNotifyPlayedSound.checked
+    }
+
     function getMinSoundDelayInMs() {
         return minSoundDelayInMsInput.getValue()
     }
@@ -82,6 +86,12 @@ Dialog {
         id: informativeDialogMonitorarFolder
         title: qsTr('Como funciona o "monitorar pasta"')
         text: qsTr("Se ativado, a pasta sempre será reanalisada em busca de novos sons. Isso permite que novos sons Possam serem adicionados mesmo se o programa estiver em execução.")
+    }
+
+    InformativeDialog {
+        id: informativeDialogNotifyPlayedSound
+        title: qsTr('Como funciona o "Notificar o som que tocar"')
+        text: qsTr("Se ativado, o som que tocar sempre será notificado. Cuidado, a caminho absoluto até o arquivo de audio aparecerá na sua tela.")
     }
 
     ScrollView {
@@ -168,6 +178,30 @@ Dialog {
 
                 CheckBox {
                     id: isToMonitorFolderCheckbox
+                }
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignCenter
+                spacing: 1
+
+                Label {
+                    text: qsTr("Notificar o som que tocar")
+                }
+
+                ButtonImage {
+                    source: "qrc:/assets/question_mark-svgrepo_com.svg"
+
+                    onClicked: informativeDialogMonitorarFolder.open()
+                    width: 10
+                    transform: Translate {
+                        x: -1
+                        y: -5
+                    }
+                }
+
+                CheckBox {
+                    id: isToNotifyPlayedSound
                 }
             }
 
