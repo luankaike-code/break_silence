@@ -9,7 +9,12 @@
 RandomSoundPlayerBackend::RandomSoundPlayerBackend(QObject *parent)
     : QObject{parent},
     m_maxSoundDelayInMs(0),
-    m_minSoundDelayInMs(0)
+    m_minSoundDelayInMs(0),
+    m_isToMonitorFolder(false),
+    m_maxSoundVolumeNormalized(0.0),
+    m_minSoundVolumeNormalized(0.0),
+    m_soundPaths({}),
+    m_folderPath("")
 {}
 
 QString RandomSoundPlayerBackend::getRandomSoundOnFolder() {

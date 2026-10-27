@@ -5,10 +5,12 @@
 
 ConfigurationWindowBackend::ConfigurationWindowBackend(QObject *parent)
     : QObject{parent},
-    m_minSoundDelayInMs(-1),
-    m_maxSoundDelayInMs(-1),
+    m_minSoundDelayInMs(0),
+    m_maxSoundDelayInMs(0),
     m_isToMonitorFolder(false),
-    m_folderPath("")
+    m_folderPath(""),
+    m_maxSoundVolumeNormalized(0.0),
+    m_minSoundVolumeNormalized(0.0)
 {}
 
 void ConfigurationWindowBackend::startSession() {
