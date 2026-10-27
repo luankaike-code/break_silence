@@ -4,7 +4,7 @@ import Qt.labs.platform
 SystemTrayIcon {
     id: trayIcon
     visible: true
-    tooltip: qsTr("Menu de controle")
+    tooltip: qsTr("BreakSilence")
 
     required property bool configurationWindowIsvisible
 

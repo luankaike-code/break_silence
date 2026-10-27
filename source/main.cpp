@@ -8,6 +8,12 @@ int main(int argc, char *argv[])
 
     app.setWindowIcon(QIcon(":/assets/breaksilence_icon.svg"));
 
+    app.setOrganizationName("luankaike-code");
+    app.setOrganizationDomain("github.com/luankaike-code");
+    app.setApplicationName("BreakSilence");
+    app.setApplicationDisplayName("BreakSilence");
+    app.setApplicationVersion("v1.0.0");
+
     QQmlApplicationEngine engine;
     QObject::connect(
         &engine,
