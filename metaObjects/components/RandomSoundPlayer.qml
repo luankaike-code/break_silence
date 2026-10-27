@@ -9,6 +9,9 @@ Item {
 
     signal soundFinished
 
+    signal errorSoundNotFound(soundPath: string)
+    signal errorFolderNotHasSound
+
     required property string folderPath
     required property bool isToMonitorFolder
     required property int minSoundDelayInMs
@@ -52,10 +55,12 @@ Item {
         maxSoundVolumeNormalized: root.maxSoundVolumeNormalized
 
         onErrorSoundNotFound: function (soundPath) {
+            root.errorSoundNotFound(soundPath)
             console.log("sound not found:", soundPath)
         }
 
         onErrorFolderNotHasSound: {
+            root.errorFolderNotHasSound()
             console.log("folder not has sound")
         }
     }
