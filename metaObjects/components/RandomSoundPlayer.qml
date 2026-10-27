@@ -38,6 +38,9 @@ Item {
         mediaPlayer.source = backend.getRandomSoundOnFolder()
         audioOutput.volume = backend.getVolumeNormalizedToNextSound()
 
+        if(!mediaPlayer.source || mediaPlayer.source.toString().trim() === "")
+            return
+
         console.log("played sound:", mediaPlayer.source)
         console.log("sound volume:", audioOutput.volume)
 
