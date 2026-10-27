@@ -8,6 +8,7 @@ Item {
     id: root
 
     signal soundFinished
+    signal soundPlayed(soundPath: string)
 
     signal errorSoundNotFound(soundPath: string)
     signal errorFolderNotHasSound
@@ -87,9 +88,16 @@ Item {
         }
 
         onPlaybackStateChanged: {
-            if (playbackState === MediaPlayer.StoppedState) {
-                root.soundFinished()
-                playTimer()
+            switch(playbackState) {
+                case MediaPlayer.PlayingState:
+                    console.log("oi")
+                    soundPlayed(mediaPlayer.source)
+                    break
+                case MediaPlayer.StoppedState:
+                    console.log("porra")
+                    root.soundFinished()
+                    playTimer()
+                    break
             }
         }
 
