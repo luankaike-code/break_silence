@@ -9,26 +9,27 @@ SystemTrayIcon {
     required property bool configurationWindowIsvisible
 
     signal toggleConfigurationWindowVisibilityRequested
+    signal showCurrentConfigurationRequested
 
     icon.source: "qrc:/assets/breaksilence_icon.svg"
     menu:
         Menu {
             MenuItem {
-                text: configurationWindowIsvisible ? "Ocultar Janela" : "Exibir Janela"
+                text: configurationWindowIsvisible ? qsTr("Ocultar janela de configuração") :  qsTr("Exibir Janela de configuração")
                 onTriggered: toggleConfigurationWindowVisibilityRequested()
-            }
-
-            MenuItem {
-                text: "Enviar Notificação"
-                onTriggered: {
-                    trayIcon.showMessage("Olá!", "Esta é uma notificação da bandeja.")
-                }
             }
 
             MenuSeparator {}
 
             MenuItem {
-                text: "Sair"
+                text: qsTr("Exibir configuração atual")
+                onTriggered: showCurrentConfigurationRequested()
+            }
+
+            MenuSeparator {}
+
+            MenuItem {
+                text: qsTr("Sair")
                 onTriggered: Qt.quit()
             }
         }
