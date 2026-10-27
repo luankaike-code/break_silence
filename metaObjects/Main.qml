@@ -22,9 +22,20 @@ ConfigurationWindow {
         minSoundVolumeNormalized: { return configurationWindow.getMinSoundVolumeNormalized() }
         maxSoundVolumeNormalized: { return configurationWindow.getMaxSoundVolumeNormalized() }
         isToMonitorFolder: { return configurationWindow.getIsToMonitorFolder() }
+
+        onErrorSoundNotFound: function(soundPath) {
+            systemTray.showMessage(qsTr("Erro: som não encontrado"), qsTr("O som %1 não foi encontrado").arg(soundPath))
+            configurationWindow.show()
+        }
+
+        onErrorFolderNotHasSound: {
+            systemTray.showMessage(qsTr("Erro: a pasta não contém sons"), qsTr("Nenhum som foi encontrado na pasta"))
+            configurationWindow.show()
+        }
     }
 
     SystemTray {
+        id: systemTray
         configurationWindowIsvisible: configurationWindow.visible
         onToggleConfigurationWindowVisibilityRequested: configurationWindow.visible? configurationWindow.hide() : configurationWindow.show()
     }
