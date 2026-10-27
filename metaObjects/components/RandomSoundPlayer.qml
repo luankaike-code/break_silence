@@ -90,11 +90,9 @@ Item {
         onPlaybackStateChanged: {
             switch(playbackState) {
                 case MediaPlayer.PlayingState:
-                    console.log("oi")
                     soundPlayed(mediaPlayer.source)
                     break
                 case MediaPlayer.StoppedState:
-                    console.log("porra")
                     root.soundFinished()
                     playTimer()
                     break
