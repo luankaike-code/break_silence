@@ -11,6 +11,7 @@ Item {
     signal soundPlayed(soundPath: string)
 
     signal errorSoundNotFound(soundPath: string)
+    signal errorToPlaySound(soundPath: string, error: string)
     signal errorFolderNotHasSound
 
     required property string folderPath
@@ -120,7 +121,8 @@ Item {
 
         onErrorChanged: {
             if (error !== MediaPlayer.NoError) {
-                console.log("error to play audio:", errorString)
+                console.log(qsTr("error to play audio (%1): %2").arg(source).arg(errorString))
+                errorToPlaySound(source, errorString)
             }
         }
     }
