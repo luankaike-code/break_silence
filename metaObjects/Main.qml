@@ -7,11 +7,18 @@ ConfigurationWindow {
     onSessionStarted: {
         console.log("Session started")
         randomSoundPlayer.play()
+        rootVariables.sessionIsStarted = true
     }
 
     onClosing: (closeEvent) => {
         closeEvent.accepted = false
         configurationWindow.hide()
+    }
+
+    QtObject {
+        id: rootVariables
+
+        property bool sessionIsStarted: false
     }
 
     RandomSoundPlayer {
@@ -22,6 +29,13 @@ ConfigurationWindow {
         minSoundVolumeNormalized: { return configurationWindow.getMinSoundVolumeNormalized() }
         maxSoundVolumeNormalized: { return configurationWindow.getMaxSoundVolumeNormalized() }
         isToMonitorFolder: { return configurationWindow.getIsToMonitorFolder() }
+
+        onRunningChanged: {
+            if(running)
+                return
+
+            systemTray.showMessage(qsTr("Sessão pausada"), qsTr("A sessão está pausada, nenhum som tocará enquanto estiver"))
+        }
 
         onSoundPlayed: function(soundPath) {
             if (configurationWindow.getIsToNotifyPlayedSound())
@@ -42,7 +56,19 @@ ConfigurationWindow {
     SystemTray {
         id: systemTray
         configurationWindowIsvisible: configurationWindow.visible
-        onToggleConfigurationWindowVisibilityRequested: configurationWindow.visible? configurationWindow.hide() : configurationWindow.show()
+        sessionIsStarted: rootVariables.sessionIsStarted
+        soundPlayerIsPlaying: randomSoundPlayer.running
+        onToggleConfigurationWindowVisibilityRequested: {
+            if(configurationWindow.visible) {
+                configurationWindow.hide()
+            } else {
+                rootVariables.sessionIsStarted = false
+                configurationWindow.show()
+            }
+        }
+
+        onToggleSoundPlayerRequested: randomSoundPlayer.running? randomSoundPlayer.pauseTimer() : randomSoundPlayer.resumeTimer()
+
         onShowCurrentConfigurationRequested: function() {
             systemTray.showMessage(qsTr("Configuração atual"), qsTr(`
             caminho da pasta com os sons: %1
