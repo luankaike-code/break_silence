@@ -20,19 +20,36 @@ Item {
     required property real minSoundVolumeNormalized
     required property real maxSoundVolumeNormalized
 
+    property bool running
+
     function play() {
-        playTimer()
-    }
-
-    function stop() {
-        timer.stop()
-        mediaPlayer.stop()
-    }
-
-    function playTimer() {
-        timer.interval = backend.getDelayToNextSoundInMs()
-        console.log("delay to next sound:", timer.interval, "Ms")
+        running = true
+        updateTimerInterval()
         timer.start()
+    }
+
+    function resumeTimer() {
+        if(running)
+            return
+
+        console.log("resume RandomSoundPlayer´s timer")
+        running = true
+        timer.start()
+    }
+
+    function pauseTimer() {
+        if(!running)
+            return
+
+        console.log("pause RandomSoundPlayer´s timer")
+        running = false
+        timer.stop()
+    }
+
+    function updateTimerInterval() {
+        timer.interval = backend.getDelayToNextSoundInMs()
+
+        console.log("delay to next sound:", timer.interval, "Ms")
     }
 
     function playSound() {
@@ -94,7 +111,9 @@ Item {
                     break
                 case MediaPlayer.StoppedState:
                     root.soundFinished()
-                    playTimer()
+                    updateTimerInterval()
+                    if(root.running)
+                        timer.start()
                     break
             }
         }
