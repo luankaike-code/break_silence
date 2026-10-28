@@ -7,8 +7,11 @@ SystemTrayIcon {
     tooltip: qsTr("BreakSilence")
 
     required property bool configurationWindowIsvisible
+    required property bool sessionIsStarted
+    required property bool soundPlayerIsPlaying
 
     signal toggleConfigurationWindowVisibilityRequested
+    signal toggleSoundPlayerRequested
     signal showCurrentConfigurationRequested
 
     icon.source: "qrc:/assets/breaksilence_icon.svg"
@@ -17,6 +20,12 @@ SystemTrayIcon {
             MenuItem {
                 text: configurationWindowIsvisible ? qsTr("Ocultar janela de configuração") :  qsTr("Exibir Janela de configuração")
                 onTriggered: toggleConfigurationWindowVisibilityRequested()
+            }
+
+            MenuItem {
+                visible: sessionIsStarted
+                text: soundPlayerIsPlaying ? qsTr("Pausar") : qsTr("Retomar")
+                onTriggered: toggleSoundPlayerRequested()
             }
 
             MenuSeparator {}
