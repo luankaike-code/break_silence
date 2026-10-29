@@ -43,11 +43,11 @@ Dialog {
     }
 
     function setErrorInvalidMinMaxDelayInterval() {
-        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do tempo é inválido", [minSoundDelayInMsInput, maxSoundDelayInMsInput])
+        rootFunctions.setCurrentError(qsTr("O intervalo de mínimo e máximo do tempo é inválido"), [minSoundDelayInMsInput, maxSoundDelayInMsInput])
     }
 
     function setErrorInvalidMinMaxVolumeInterval() {
-        rootFunctions.setCurrentError("O intervalo de mínimo e mximo do volume é inválido", [minSoundDelayInMsInput, maxSoundDelayInMsInput])
+        rootFunctions.setCurrentError(qsTr("O intervalo de mínimo e máximo do volume é inválido"), [minSoundDelayInMsInput, maxSoundDelayInMsInput])
     }
 
     function clearErrors() {

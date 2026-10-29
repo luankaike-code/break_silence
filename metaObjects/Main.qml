@@ -21,7 +21,7 @@ ConfigurationWindow {
     }
 
     onSessionStarted: {
-        console.log("Session started")
+        console.log(qsTr("Sessão iniciada"))
         console.log(configurationWindow.getCurrentConfigurationString())
         randomSoundPlayer.play()
         rootVariables.sessionIsStarted = true

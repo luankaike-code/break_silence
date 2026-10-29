@@ -33,7 +33,7 @@ Item {
         if(running)
             return
 
-        console.log("resume RandomSoundPlayer´s timer")
+        console.log(qsTr("retornando o temporizador do RandomSoundPlayer"))
         running = true
         timer.start()
     }
@@ -42,7 +42,7 @@ Item {
         if(!running)
             return
 
-        console.log("pause RandomSoundPlayer´s timer")
+        console.log(qsTr("pausando o temporizador do RandomSoundPlayer"))
         running = false
         timer.stop()
     }
@@ -50,7 +50,7 @@ Item {
     function updateTimerInterval() {
         timer.interval = backend.getDelayToNextSoundInMs()
 
-        console.log("delay to next sound:", timer.interval, "Ms")
+        console.log(qsTr("delay até o próximo som: %1 MS").arg(timer.interval))
     }
 
     function nextSound() {
@@ -68,8 +68,8 @@ Item {
         if(!mediaPlayer.source || mediaPlayer.source.toString().trim() === "")
             return
 
-        console.log("played sound:", mediaPlayer.source)
-        console.log("sound volume:", audioOutput.volume)
+        console.log(qsTr("som tocado: %1").arg(mediaPlayer.source))
+        console.log(qsTr("volume do som: %1").arg(audioOutput.volume))
 
         mediaPlayer.play()
     }
@@ -86,12 +86,12 @@ Item {
 
         onErrorSoundNotFound: function (soundPath) {
             root.errorSoundNotFound(soundPath)
-            console.log("sound not found:", soundPath)
+            console.log(qsTr("som não encontrado: $1").arg(soundPath))
         }
 
         onErrorFolderNotHasSound: {
             root.errorFolderNotHasSound()
-            console.log("folder not has sound")
+            console.log(qsTr("a pasta não contém sons"))
         }
     }
 
@@ -127,7 +127,7 @@ Item {
 
         onErrorChanged: {
             if (error !== MediaPlayer.NoError) {
-                console.log(qsTr("error to play audio (%1): %2").arg(source).arg(errorString))
+                console.log(qsTr("error ao tocar o audio (%1): %2").arg(source).arg(errorString))
                 root.errorToPlaySound(source, errorString)
                 root.nextSound()
             }
