@@ -4,8 +4,25 @@ import "components"
 ConfigurationWindow {
     id: configurationWindow
     visible: true
+
+    function getCurrentConfigurationString() {
+        return qsTr(`
+        caminho da pasta com os sons: %1
+        intervalo de tempo: %2 MS - %3 MS
+        intervalo de volume: %4 - %5
+        é para monitorar a pasta: %6
+        é para notificar o som que tocar: %7
+        `).arg(configurationWindow.getFolderPath())
+            .arg(configurationWindow.getMinSoundDelayInMs())
+            .arg( configurationWindow.getMaxSoundDelayInMs())
+            .arg(configurationWindow.getMinSoundVolumeNormalized()).arg( configurationWindow.getMaxSoundVolumeNormalized())
+            .arg(configurationWindow.getIsToMonitorFolder())
+            .arg(configurationWindow.getIsToNotifyPlayedSound())
+    }
+
     onSessionStarted: {
         console.log("Session started")
+        console.log(configurationWindow.getCurrentConfigurationString())
         randomSoundPlayer.play()
         rootVariables.sessionIsStarted = true
     }
@@ -76,19 +93,7 @@ ConfigurationWindow {
         onToggleSoundPlayerRequested: randomSoundPlayer.running? randomSoundPlayer.pauseTimer() : randomSoundPlayer.resumeTimer()
 
         onShowCurrentConfigurationRequested: function() {
-            systemTray.showMessage(qsTr("Configuração atual"), qsTr(`
-            caminho da pasta com os sons: %1
-            intervalo de tempo: %2 MS - %3 MS
-            intervalo de volume: %4 - %5
-            é para monitorar a pasta: %6
-            é para notificar o som que tocar: %7
-            `).arg(configurationWindow.getFolderPath())
-                .arg(configurationWindow.getMinSoundDelayInMs())
-                .arg( configurationWindow.getMaxSoundDelayInMs())
-                .arg(configurationWindow.getMinSoundVolumeNormalized()).arg( configurationWindow.getMaxSoundVolumeNormalized())
-                .arg(configurationWindow.getIsToMonitorFolder())
-                .arg(configurationWindow.getIsToNotifyPlayedSound())
-            )
+            systemTray.showMessage(qsTr("Configuração atual"), configurationWindow.getCurrentConfigurationString())
         }
     }
 }
