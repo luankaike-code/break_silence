@@ -19,6 +19,8 @@ ConfigurationWindow {
         id: rootVariables
 
         property bool sessionIsStarted: false
+
+        onSessionIsStartedChanged: randomSoundPlayer.running = sessionIsStarted
     }
 
     RandomSoundPlayer {
