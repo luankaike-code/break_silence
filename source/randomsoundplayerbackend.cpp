@@ -27,7 +27,7 @@ QString RandomSoundPlayerBackend::getRandomSoundOnFolder() {
     }
 
     int randomIndex = Numbers::getRandomInt(0, soundPaths.size()-1);
-    QString choosedSound =soundPaths[randomIndex];
+    QString choosedSound = soundPaths[randomIndex];
 
     if (!QFileInfo::exists(choosedSound)) {
         forceSoundPathsUpdate();
