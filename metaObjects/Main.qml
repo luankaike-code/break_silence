@@ -47,6 +47,10 @@ ConfigurationWindow {
             configurationWindow.show()
         }
 
+        onErrorToPlaySound: function(soundPath, error) {
+            systemTray.showMessage(qsTr("Erro: som não pode ser tocado"), qsTr("O som %1 não foi tocado. Erro dado: %2").arg(soundPath).arg(error))
+        }
+
         onErrorFolderNotHasSound: {
             systemTray.showMessage(qsTr("Erro: a pasta não contém sons"), qsTr("Nenhum som foi encontrado na pasta"))
             configurationWindow.show()
