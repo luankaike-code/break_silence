@@ -53,7 +53,15 @@ Item {
         console.log("delay to next sound:", timer.interval, "Ms")
     }
 
+    function nextSound() {
+        updateTimerInterval()
+        console.log(root.running)
+        if(root.running)
+            timer.start()
+    }
+
     function playSound() {
+        mediaPlayer.source = ""
         mediaPlayer.source = backend.getRandomSoundOnFolder()
         audioOutput.volume = backend.getVolumeNormalizedToNextSound()
 
@@ -108,13 +116,11 @@ Item {
         onPlaybackStateChanged: {
             switch(playbackState) {
                 case MediaPlayer.PlayingState:
-                    soundPlayed(mediaPlayer.source)
+                    root.soundPlayed(mediaPlayer.source)
                     break
                 case MediaPlayer.StoppedState:
                     root.soundFinished()
-                    updateTimerInterval()
-                    if(root.running)
-                        timer.start()
+                    root.nextSound()
                     break
             }
         }
@@ -122,7 +128,8 @@ Item {
         onErrorChanged: {
             if (error !== MediaPlayer.NoError) {
                 console.log(qsTr("error to play audio (%1): %2").arg(source).arg(errorString))
-                errorToPlaySound(source, errorString)
+                root.errorToPlaySound(source, errorString)
+                root.nextSound()
             }
         }
     }
