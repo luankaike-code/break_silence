@@ -1,12 +1,16 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QIcon>
+#include <iostream>
+#include "iconmanager.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    app.setWindowIcon(QIcon(":/assets/breaksilence_icon.svg"));
+    app.setWindowIcon(QIcon(
+        IconManager::getIconPath(IconManager::Enum::Normal,  true)
+    ));
 
     app.setOrganizationName("luankaike-code");
     app.setOrganizationDomain("github.com/luankaike-code");

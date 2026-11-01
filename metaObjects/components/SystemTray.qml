@@ -1,6 +1,8 @@
 import QtQuick
 import Qt.labs.platform
 
+import BreakSilence.APP.MetaObjects
+
 SystemTrayIcon {
     id: trayIcon
     visible: true
@@ -14,7 +16,12 @@ SystemTrayIcon {
     signal toggleSoundPlayerRequested
     signal showCurrentConfigurationRequested
 
-    icon.source: "qrc:/assets/breaksilence_icon.svg"
+    icon.source: IconManager.getIconPath(
+            sessionIsStarted ?
+                (soundPlayerIsPlaying ? IconManager.Played : IconManager.Paused) :
+                IconManager.Normal
+        )
+
     menu:
         Menu {
             MenuItem {
