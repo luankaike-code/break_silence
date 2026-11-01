@@ -2,6 +2,7 @@ qt_add_executable(BreakSilence.APP
     main.cpp
     files.h files.cpp
     configurationwindowbackend.h configurationwindowbackend.cpp
+    iconmanager.h iconmanager.cpp
     numbers.h numbers.cpp
 )
 
@@ -11,4 +12,10 @@ qt_add_qml_module(BreakSilence.APP.MetaObjects
     SOURCES
         configurationwindowbackend.h configurationwindowbackend.cpp
         randomsoundplayerbackend.h randomsoundplayerbackend.cpp
+        iconmanager.h iconmanager.cpp
+)
+
+target_link_libraries(BreakSilence.APP.MetaObjects
+    PRIVATE
+        Qt6::Quick
 )
