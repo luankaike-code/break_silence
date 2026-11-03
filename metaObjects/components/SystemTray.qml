@@ -4,7 +4,7 @@ import Qt.labs.platform
 import BreakSilence.APP.MetaObjects
 
 SystemTrayIcon {
-    id: trayIcon
+    id: root
     visible: true
     tooltip: qsTr("BreakSilence")
 
@@ -14,7 +14,14 @@ SystemTrayIcon {
 
     signal toggleConfigurationWindowVisibilityRequested
     signal toggleSoundPlayerRequested
+    signal pauseSoundPlayerRequested
     signal showCurrentConfigurationRequested
+
+    function tryToggleConfigurationWindowVisibility() {
+        if (!configurationWindowIsvisible)
+            pauseSoundPlayerRequested()
+        toggleConfigurationWindowVisibilityRequested()
+    }
 
     icon.source: IconManager.getIconPath(
             sessionIsStarted ?
@@ -27,8 +34,7 @@ SystemTrayIcon {
             MenuItem {
                 text: configurationWindowIsvisible ? qsTr("Ocultar janela de configuração") :  qsTr("Exibir Janela de configuração")
                 onTriggered: {
-                    toggleSoundPlayerRequested()
-                    toggleConfigurationWindowVisibilityRequested()
+                    root.tryToggleConfigurationWindowVisibility()
                 }
             }
 
@@ -55,7 +61,7 @@ SystemTrayIcon {
 
         onActivated: function(reason) {
             if (reason === SystemTrayIcon.Trigger) {
-                toggleConfigurationWindowVisibilityRequested()
+                root.tryToggleConfigurationWindowVisibility()
             }
         }
 }
