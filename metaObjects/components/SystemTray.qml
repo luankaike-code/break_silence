@@ -26,7 +26,10 @@ SystemTrayIcon {
         Menu {
             MenuItem {
                 text: configurationWindowIsvisible ? qsTr("Ocultar janela de configuração") :  qsTr("Exibir Janela de configuração")
-                onTriggered: toggleConfigurationWindowVisibilityRequested()
+                onTriggered: {
+                    toggleSoundPlayerRequested()
+                    toggleConfigurationWindowVisibilityRequested()
+                }
             }
 
             MenuItem {
