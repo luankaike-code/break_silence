@@ -90,6 +90,8 @@ ConfigurationWindow {
             }
         }
 
+        onPauseSoundPlayerRequested: randomSoundPlayer.pauseTimer()
+
         onToggleSoundPlayerRequested: randomSoundPlayer.running? randomSoundPlayer.pauseTimer() : randomSoundPlayer.resumeTimer()
 
         onShowCurrentConfigurationRequested: function() {
