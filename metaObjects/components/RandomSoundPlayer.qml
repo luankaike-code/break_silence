@@ -41,12 +41,21 @@ Item {
     }
 
     function pauseTimer() {
+        root.autoRunSound = false
+
+        console.log("chupa", mediaPlayer.playing)
+        if(mediaPlayer.playing)
+            mediaPlayer.stop()
+
         if(!root.running)
             return
 
         console.log(qsTr("pausando o temporizador do RandomSoundPlayer"))
         running = false
         timer.stop()
+        mediaPlayer.stop()
+
+        root.autoRunSound = true
     }
 
     function updateTimerInterval() {
