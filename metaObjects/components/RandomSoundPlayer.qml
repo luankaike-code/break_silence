@@ -23,8 +23,6 @@ Item {
 
     property bool running
 
-    property bool autoRunSound: true
-
     function play() {
         running = true
         updateTimerInterval()
@@ -41,8 +39,6 @@ Item {
     }
 
     function pauseTimer() {
-        root.autoRunSound = false
-
         if(mediaPlayer.playing)
             mediaPlayer.stop()
 
@@ -50,11 +46,12 @@ Item {
             return
 
         console.log(qsTr("pausando o temporizador do RandomSoundPlayer"))
+
         running = false
+        mediaPlayer.source = ""
+
         timer.stop()
         mediaPlayer.stop()
-
-        root.autoRunSound = true
     }
 
     function updateTimerInterval() {
@@ -71,21 +68,17 @@ Item {
     }
 
     function playSound() {
-        root.autoRunSound = false
-
         mediaPlayer.source = ""
         mediaPlayer.source = backend.getRandomSoundOnFolder()
         audioOutput.volume = backend.getVolumeNormalizedToNextSound()
 
-        if(!mediaPlayer.source || mediaPlayer.source.toString().trim() === "")
+        if(mediaPlayer.hasSource())
             return
 
         console.log(qsTr("som tocado: %1").arg(mediaPlayer.source))
         console.log(qsTr("volume do som: %1").arg(audioOutput.volume))
 
         mediaPlayer.play()
-
-        root.autoRunSound = true
     }
 
     RandomSoundPlayerBackend {
@@ -134,7 +127,7 @@ Item {
                     break
                 case MediaPlayer.StoppedState:
                     root.soundFinished()
-                    if(root.autoRunSound)
+                    if(hasSource())
                         root.nextSound()
                     break
             }
@@ -146,6 +139,10 @@ Item {
                 root.errorToPlaySound(source, errorString)
                 root.nextSound()
             }
+        }
+
+        function hasSource() {
+            return !mediaPlayer.source || mediaPlayer.source.toString().trim() === ""
         }
     }
 }
