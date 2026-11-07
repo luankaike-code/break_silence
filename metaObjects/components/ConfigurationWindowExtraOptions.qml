@@ -178,6 +178,7 @@ Dialog {
 
                 CheckBox {
                     id: isToMonitorFolderCheckbox
+                    checked: true
                 }
             }
 
